@@ -1,5 +1,60 @@
 {
   "kind": "fmIDE-library-families",
   "version": 1,
-  "families": {}
+  "families": {
+    "5592ec75-0ce9-48d7-88a1-377eb2b59d9a": {
+      "type": "template",
+      "kind": "module",
+      "accountId": 333327860,
+      "account": "taroyamakatrmttm-star",
+      "firstPack": "dab0e7a7-139e-430d-bff6-6dc405066113",
+      "added": "2026-09-27"
+    },
+    "63f16571-8006-44a9-9fab-810561fed9ce": {
+      "type": "function",
+      "accountId": 333327860,
+      "account": "taroyamakatrmttm-star",
+      "firstPack": "dab0e7a7-139e-430d-bff6-6dc405066113",
+      "added": "2026-09-27"
+    },
+    "669f5bdb-c88b-41b2-b74c-8298ce5c3929": {
+      "type": "template",
+      "kind": "module",
+      "accountId": 333327860,
+      "account": "taroyamakatrmttm-star",
+      "firstPack": "dab0e7a7-139e-430d-bff6-6dc405066113",
+      "added": "2026-09-27"
+    },
+    "70ce862a-538a-4040-b6d3-98493f32f959": {
+      "type": "template",
+      "kind": "module",
+      "accountId": 333327860,
+      "account": "taroyamakatrmttm-star",
+      "firstPack": "dab0e7a7-139e-430d-bff6-6dc405066113",
+      "added": "2026-09-27"
+    },
+    "be7df1bc-aa2f-4542-b690-f04a74d3c52c": {
+      "type": "template",
+      "kind": "recipe",
+      "accountId": 333327860,
+      "account": "taroyamakatrmttm-star",
+      "firstPack": "dab0e7a7-139e-430d-bff6-6dc405066113",
+      "added": "2026-09-27"
+    },
+    "e1c60128-c669-4c68-b66f-6e2e9b86f234": {
+      "type": "function",
+      "accountId": 333327860,
+      "account": "taroyamakatrmttm-star",
+      "firstPack": "dab0e7a7-139e-430d-bff6-6dc405066113",
+      "added": "2026-09-27"
+    },
+    "f6133f9a-26d1-45a8-a3e1-7a9f319ddf27": {
+      "type": "template",
+      "kind": "module",
+      "accountId": 333327860,
+      "account": "taroyamakatrmttm-star",
+      "firstPack": "dab0e7a7-139e-430d-bff6-6dc405066113",
+      "added": "2026-09-27"
+    }
+  }
 }
