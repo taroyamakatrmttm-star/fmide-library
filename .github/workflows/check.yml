@@ -1,0 +1,147 @@
+# Checks the library with fmIDE's pack checker (tools/check-pack.js --library), at the fmIDE
+# commit named in checker.json on main.
+#
+# Security: a pull request may come from anyone, and everything in it is untrusted.
+# - The workflow runs on pull_request_target, so it is always this file as it is on main:
+#   a pull request can't change its own check. checker.json (which fmIDE commit checks, and
+#   who the maintainers are) is also read from main, never from the pull request.
+# - The pull request's files are checked out as data only, into head/, without credentials.
+#   Nothing from them is ever run: no npm install, no scripts. Only fmIDE's checker runs, and
+#   it needs no packages.
+# - The submitting account comes from GitHub's own event data (the account that opened the
+#   pull request), passed through environment variables, never written into a command line.
+# - The report quotes pack text only inside one fenced block, with every character that could
+#   close it escaped, so nothing from a pack renders in the comment.
+# While fmIDE is private, reading it needs the deploy key in the secret FMIDE_DEPLOY_KEY.
+name: Check library
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened, edited]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: check-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: The library as it is on main
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.sha || github.sha }}
+          path: base
+          persist-credentials: false
+
+      - name: Which fmIDE checks it (checker.json on main)
+        id: checker
+        run: |
+          node -e '
+            const c = JSON.parse(require("fs").readFileSync("base/checker.json", "utf8"));
+            const repo = c && c.fmide && c.fmide.repository, commit = c && c.fmide && c.fmide.commit;
+            if(!/^[A-Za-z0-9-]{1,39}\/[A-Za-z0-9._-]{1,100}$/.test(repo || "") || !/^[0-9a-f]{40}$/.test(commit || "")) {
+              console.log("::error::checker.json must name fmIDE'"'"'s repository and a full 40-character commit id.");
+              process.exit(1);
+            }
+            require("fs").appendFileSync(process.env.GITHUB_OUTPUT, "repository=" + repo + "\ncommit=" + commit + "\n");
+          '
+
+      - name: fmIDE's checker, at that commit
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ steps.checker.outputs.repository }}
+          ref: ${{ steps.checker.outputs.commit }}
+          path: fmide
+          ssh-key: ${{ secrets.FMIDE_DEPLOY_KEY }}
+          persist-credentials: false
+          sparse-checkout: |
+            tools
+            src/shared
+
+      - name: The pull request's files (data only, never run)
+        if: github.event_name == 'pull_request_target'
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          path: head
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      - name: Check the library (main)
+        if: github.event_name != 'pull_request_target'
+        run: node fmide/tools/check-pack.js --library base
+
+      - name: Check the pull request
+        if: github.event_name == 'pull_request_target'
+        id: check
+        env:
+          ACCOUNT: ${{ github.event.pull_request.user.login }}
+          ACCOUNT_ID: ${{ github.event.pull_request.user.id }}
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: |
+          set +e
+          node fmide/tools/check-pack.js --library head --base base --account "$ACCOUNT" --account-id "$ACCOUNT_ID" --markdown > report.md
+          status=$?
+          set -e
+          # Only the checker's own output and fixed text go into the comment.
+          if [ "$status" -ge 2 ] || [ ! -s report.md ]; then
+            printf '## Library check: could not run ❌\n\nThe checker stopped (exit code %s); see the job log.\n' "$status" > report.md
+          fi
+          # A pull request adding a pack needs the submission terms ticked in its description.
+          terms=ok
+          if [ -d head/packs ] && [ -n "$(cd head && find packs -type f | while read -r f; do [ -e "../base/$f" ] || echo "$f"; done)" ]; then
+            if ! printf '%s\n' "$PR_BODY" | grep -Eiq '^[[:space:]]*[-*][[:space:]]*\[x\][[:space:]]*I have read the \[submission terms\]'; then
+              terms=missing
+            fi
+          fi
+          {
+            echo '<!-- fmide-library-check -->'
+            if [ "$terms" = missing ]; then
+              printf '> ❌ **The submission terms are not ticked.** Tick the box in this pull request'"'"'s description (it comes from the template) to agree to them.\n\n'
+            fi
+            cat report.md
+          } > comment.md
+          cat comment.md >> "$GITHUB_STEP_SUMMARY"
+          echo "status=$status" >> "$GITHUB_OUTPUT"
+          echo "terms=$terms" >> "$GITHUB_OUTPUT"
+
+      - name: Post the report on the pull request
+        if: github.event_name == 'pull_request_target' && always() && steps.check.outcome != 'skipped'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          [ -s comment.md ] || exit 0
+          # One comment per pull request, updated in place.
+          id=$(gh api "repos/$REPO/issues/$PR/comments" --paginate \
+                 --jq '.[] | select(.user.login == "github-actions[bot]" and (.body | startswith("<!-- fmide-library-check -->"))) | .id' | head -n 1)
+          if [ -n "$id" ]; then
+            gh api -X PATCH "repos/$REPO/issues/comments/$id" -F body=@comment.md > /dev/null
+          else
+            gh api -X POST "repos/$REPO/issues/$PR/comments" -F body=@comment.md > /dev/null
+          fi
+
+      - name: Result
+        if: github.event_name == 'pull_request_target'
+        env:
+          STATUS: ${{ steps.check.outputs.status }}
+          TERMS: ${{ steps.check.outputs.terms }}
+        run: |
+          if [ "$STATUS" != "0" ]; then echo "::error::The library check failed; see the report on the pull request."; exit 1; fi
+          if [ "$TERMS" != "ok" ]; then echo "::error::The submission terms are not ticked in the pull request's description."; exit 1; fi
+          echo "Passed."

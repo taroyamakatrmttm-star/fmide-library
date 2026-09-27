@@ -1,0 +1,40 @@
+name: Report an item
+description: A pack holds something that isn't its author's to share, credits the wrong person, or is harmful or broken.
+title: "Report: pack "
+labels: ["report"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting. The maintainer reads every report. If the report holds up, the pack is taken down: it leaves the library and the catalogue, its records stay, and copies already downloaded stay their owners' under CC BY 4.0.
+  - type: input
+    id: pack
+    attributes:
+      label: Pack id
+      description: The file name in packs/ without ".fmide-pack.json", or the id fmIDE shows in the pack's preview.
+    validations:
+      required: true
+  - type: input
+    id: item
+    attributes:
+      label: Which item
+      description: The template, recipe or function name, and its version (for example "Balance Sheet v2"). Leave empty for the whole pack.
+  - type: dropdown
+    id: reason
+    attributes:
+      label: Reason
+      options:
+        - It isn't the submitter's to share (copied from someone else)
+        - It credits the wrong author
+        - It is harmful, offensive or misleading
+        - It is broken or calculates wrongly
+        - Something else
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: What is wrong, and how you know. If it is your own work, say where it was first published.
+    validations:
+      required: true
