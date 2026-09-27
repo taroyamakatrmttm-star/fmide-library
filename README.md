@@ -2,13 +2,13 @@
 
 Templates, recipes and functions that people share for [fmIDE](https://github.com/taroyamakatrmttm-star/fmide), the visual builder for financial models. Each one is a **library pack**: a single file that fmIDE writes (**File → Save as Library Pack…**) and reads (**File → Open Library Pack…**), with a preview of what it holds before anything is added.
 
-> **For now the library is private** and holds only the maintainer's own packs. Submissions from other people open when it is made public.
+> **The catalogue:** browse the approved packs at **https://fmide.pages.dev/library/**. Each pack has a page listing what it holds, a download, and the credit its licence asks for.
 
 Everything here is formulas and layout, never code: fmIDE reads a pack with its own parser and never runs anything in it. Macros are not shared.
 
 ## Using a pack
 
-1. Download a file from `packs/` (each is named `<pack id>.fmide-pack.json`).
+1. Find the pack in the [catalogue](https://fmide.pages.dev/library/) and download it from its page (or download the file from `packs/` here; each is named `<pack id>.fmide-pack.json`).
 2. In fmIDE: **File → Open Library Pack…**, choose the file, look at the preview, untick anything you don't want, and click **Add to My Library**.
 
 fmIDE shows where each item came from, including its author and pack, in the Templates window and the Functions manager. That line is the credit CC BY 4.0 asks for.
@@ -46,7 +46,7 @@ Their exact format is in fmIDE's [`docs/file-formats.md`](https://github.com/tar
 
 ## Reporting an item, and takedowns
 
-If a pack holds something that isn't its author's to share, credits the wrong person, or is harmful or broken, open an issue with the **Report an item** form. While the library is private, contact the maintainer directly.
+If a pack holds something that isn't its author's to share, credits the wrong person, or is harmful or broken, open an issue with the **Report an item** form. Each pack's page in the catalogue has a **Report this pack** link that opens the form with the pack id filled in.
 
 A takedown removes the pack file from the library and from the catalogue. Its records stay, so its ids are never used again, and family ownership doesn't change. Copies people have already downloaded stay theirs, under CC BY 4.0.
 
@@ -54,7 +54,8 @@ A takedown removes the pack file from the library and from the catalogue. Its re
 
 - **Approving a submission:** read the check's comment. Its summary lists the account, the new pack and the families it claims. Look at the pack's content, then merge.
 - **Adding records yourself:** in a checkout of fmIDE at the commit in `checker.json`, run `node tools/check-pack.js --library PATH/TO/fmide-library --write-records --account LOGIN --account-id ID` with the submitter's login and numeric id (shown in the check's comment), then commit the three record files to the pull request.
-- **A takedown:** a pull request of its own that only deletes the pack file.
+- **A takedown:** a pull request of its own that only deletes the pack file. It leaves the catalogue when fmIDE's pointer is moved past it (below).
+- **Publishing to the catalogue:** the catalogue is built by fmIDE from this repository, which fmIDE holds as a git submodule (`library/`) pinned to one commit. After merging here, in fmIDE run `git submodule update --remote library` and open a pull request with that one change. fmIDE's build checks every pack again (nothing is published if one fails); the pull request's preview shows the new catalogue, and merging it updates the live site.
 - **Moving to a newer checker:** a pull request that changes `fmide.commit` in `checker.json` to a newer fmIDE commit. It takes effect once merged, because checks always read `checker.json` from `main`.
 - **Access to fmIDE:** while fmIDE is private, the check reads it with the deploy key stored in this repository's secret `FMIDE_DEPLOY_KEY`.
 
