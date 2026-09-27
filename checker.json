@@ -1,0 +1,11 @@
+{
+  "kind": "fmIDE-library-checker",
+  "version": 1,
+  "fmide": {
+    "repository": "taroyamakatrmttm-star/fmide",
+    "commit": "860392b2a003ea9995db2705619a3290c918f291"
+  },
+  "maintainers": [
+    { "accountId": 333327860, "account": "taroyamakatrmttm-star" }
+  ]
+}

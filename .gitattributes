@@ -1,0 +1,5 @@
+# Record files always use LF line endings.
+*.json text eol=lf
+# Packs are kept byte for byte as submitted (their hash is recorded in packs.json):
+# Git never changes their line endings.
+packs/** -text
