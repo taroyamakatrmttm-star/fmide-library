@@ -1,0 +1,1365 @@
+{
+  "kind": "fmIDE-library-pack",
+  "version": 4,
+  "pack": {
+    "id": "035b03a9-cca5-473e-b112-ffc0d33d5f53",
+    "title": "Transactions v01",
+    "author": "TRMTTM",
+    "licence": "CC-BY-4.0",
+    "description": "Revenue, Accounts Receivable\nCOGS, Inventory, Accounts Payable\nLoan Interest",
+    "tags": [],
+    "created": "2026-10-04"
+  },
+  "templates": [
+    {
+      "name": "Corkscrew",
+      "description": "BB + increase - decrease = EB",
+      "group": "Utilities",
+      "kind": "module",
+      "family": "a2f3f5e8-7d5b-454e-9c53-115dd20e78f8",
+      "version": 1,
+      "note": "",
+      "versionId": "6eb2f7b8-e881-4e13-8920-6656f5ffa9cc",
+      "data": {
+        "version": 7,
+        "kind": "module",
+        "name": "Corkscrew",
+        "selfCanvasId": "c9",
+        "nextId": 688,
+        "nodes": [
+          {
+            "id": "n674",
+            "type": "value",
+            "x": 77,
+            "y": 53,
+            "w": 170,
+            "h": 64,
+            "text": "Beginning Balance",
+            "plugs": []
+          },
+          {
+            "id": "n675",
+            "type": "value",
+            "x": 77,
+            "y": 290,
+            "w": 170,
+            "h": 64,
+            "text": "Ending Balance",
+            "blockRole": "output",
+            "plugs": []
+          },
+          {
+            "id": "n676",
+            "type": "value",
+            "x": 281,
+            "y": 133.33333333333334,
+            "w": 170,
+            "h": 64,
+            "text": "Increase",
+            "blockRole": "input",
+            "plugs": []
+          },
+          {
+            "id": "n677",
+            "type": "value",
+            "x": 281,
+            "y": 209.66666666666669,
+            "w": 170,
+            "h": 64,
+            "text": "Decrease",
+            "blockRole": "input",
+            "plugs": []
+          },
+          {
+            "id": "n678",
+            "type": "operator",
+            "x": 134,
+            "y": 213.66666666666669,
+            "w": 56,
+            "h": 56,
+            "text": "−",
+            "socket": ""
+          },
+          {
+            "id": "n679",
+            "type": "operator",
+            "x": 134,
+            "y": 137.33333333333334,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": ""
+          },
+          {
+            "id": "n685",
+            "type": "periodShift",
+            "x": 32,
+            "y": 175.5,
+            "w": 56,
+            "h": 56,
+            "shift": -1
+          }
+        ],
+        "edges": [
+          {
+            "id": "e680",
+            "from": "n674",
+            "to": "n679"
+          },
+          {
+            "id": "e681",
+            "from": "n676",
+            "to": "n679"
+          },
+          {
+            "id": "e682",
+            "from": "n679",
+            "to": "n678"
+          },
+          {
+            "id": "e683",
+            "from": "n677",
+            "to": "n678"
+          },
+          {
+            "id": "e684",
+            "from": "n678",
+            "to": "n675"
+          },
+          {
+            "id": "e686",
+            "from": "n675",
+            "to": "n685"
+          },
+          {
+            "id": "e687",
+            "from": "n685",
+            "to": "n674"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Revenue AR",
+      "description": "",
+      "group": "Transactions",
+      "kind": "recipe",
+      "family": "f72d248f-d3ad-4079-81ea-7902a8431e2c",
+      "version": 2,
+      "note": "",
+      "versionId": "b59fcdc0-74f5-4b4e-b2c0-9434f28eb5d1",
+      "data": {
+        "kind": "recipe",
+        "parts": [
+          {
+            "family": "f1807494-af31-42b2-801f-0bd8ca0680b8",
+            "version": "latest",
+            "name": "Revenue"
+          },
+          {
+            "family": "9e9f5629-f599-4a84-8816-e62f75ed52d0",
+            "version": "latest",
+            "name": "AR"
+          },
+          {
+            "family": "a9e0e655-3f6c-4c3f-94ff-d022c8638777",
+            "version": "latest",
+            "name": "Days in a Period"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Revenue",
+      "description": "Unit price x Volume = Revenue",
+      "group": "Transactions",
+      "kind": "module",
+      "family": "f1807494-af31-42b2-801f-0bd8ca0680b8",
+      "version": 3,
+      "note": "Renove \"AR Base\" plug as it will contanimate multiple load",
+      "versionId": "27249e3c-e52a-4737-856f-3bfe4664969d",
+      "data": {
+        "version": 7,
+        "kind": "module",
+        "name": "Revenue",
+        "selfCanvasId": "c96",
+        "nextId": 4846,
+        "nodes": [
+          {
+            "id": "n4839",
+            "type": "value",
+            "x": 405,
+            "y": 118,
+            "w": 170,
+            "h": 64,
+            "text": "Volume",
+            "blockRole": null,
+            "plugs": []
+          },
+          {
+            "id": "n4840",
+            "type": "value",
+            "x": 197,
+            "y": 118,
+            "w": 170,
+            "h": 64,
+            "text": "Unit Price",
+            "blockRole": null,
+            "plugs": []
+          },
+          {
+            "id": "n4841",
+            "type": "value",
+            "x": 302,
+            "y": 290,
+            "w": 170,
+            "h": 64,
+            "text": "Revenue\n0",
+            "blockRole": null,
+            "plugs": [
+              "Total Revenue"
+            ]
+          },
+          {
+            "id": "n4842",
+            "type": "operator",
+            "x": 359,
+            "y": 192,
+            "w": 56,
+            "h": 56,
+            "text": "×",
+            "socket": ""
+          }
+        ],
+        "edges": [
+          {
+            "id": "e4843",
+            "from": "n4840",
+            "to": "n4842"
+          },
+          {
+            "id": "e4844",
+            "from": "n4839",
+            "to": "n4842"
+          },
+          {
+            "id": "e4845",
+            "from": "n4842",
+            "to": "n4841"
+          }
+        ]
+      },
+      "attachments": {
+        "excel": {
+          "family": "f1807494-af31-42b2-801f-0bd8ca0680b8",
+          "name": "Revenue",
+          "rows": [
+            {
+              "name": "unit price",
+              "section": "input",
+              "include": true,
+              "constant": false
+            },
+            {
+              "name": "volume",
+              "section": "input",
+              "include": true,
+              "constant": false
+            },
+            {
+              "name": "revenue",
+              "section": "output",
+              "include": true,
+              "constant": false,
+              "style": {
+                "fill": null,
+                "font": {
+                  "color": "#475569",
+                  "weight": "normal"
+                },
+                "border": {
+                  "color": "#94a3b8",
+                  "style": "solid",
+                  "sides": [
+                    "top"
+                  ]
+                }
+              }
+            }
+          ],
+          "customs": [],
+          "sectioned": [
+            "r0",
+            "r1",
+            "r2"
+          ],
+          "flat": [
+            "r0",
+            "r1",
+            "r2"
+          ]
+        }
+      }
+    },
+    {
+      "name": "AR",
+      "description": "",
+      "group": "Transactions",
+      "kind": "module",
+      "family": "9e9f5629-f599-4a84-8816-e62f75ed52d0",
+      "version": 6,
+      "note": "remove empty alias",
+      "versionId": "841428c1-2490-42d8-a145-d14d839fdc2c",
+      "data": {
+        "version": 7,
+        "kind": "module",
+        "name": "AR",
+        "selfCanvasId": "c371",
+        "nextId": 20740,
+        "nodes": [
+          {
+            "id": "n20695",
+            "type": "value",
+            "x": 295.25,
+            "y": 80,
+            "w": 170,
+            "h": 64,
+            "text": "DSO",
+            "periodValues": [
+              30,
+              30,
+              30,
+              30,
+              30,
+              30,
+              30,
+              30,
+              30,
+              30
+            ],
+            "periodValuesRange": {
+              "min": 0,
+              "max": 1
+            },
+            "blockRole": "input",
+            "plugs": []
+          },
+          {
+            "id": "n20696",
+            "type": "value",
+            "x": 281,
+            "y": 315,
+            "w": 170,
+            "h": 64,
+            "text": "Beginning Balance",
+            "blockRole": null,
+            "plugs": []
+          },
+          {
+            "id": "n20697",
+            "type": "value",
+            "x": 281,
+            "y": 552,
+            "w": 170,
+            "h": 64,
+            "text": "AR Ending Balance",
+            "blockRole": null,
+            "plugs": [],
+            "style": {
+              "numberFormat": {
+                "kind": "general",
+                "decimals": 1,
+                "currencySymbol": "$"
+              },
+              "fill": null,
+              "border": {
+                "color": "#94a3b8",
+                "width": 1.5,
+                "style": "solid"
+              },
+              "font": {
+                "family": "",
+                "size": 14,
+                "weight": "normal",
+                "color": "#1e2937"
+              }
+            }
+          },
+          {
+            "id": "n20698",
+            "type": "value",
+            "x": 485,
+            "y": 395.33333333333337,
+            "w": 170,
+            "h": 64,
+            "text": "Increase",
+            "blockRole": null,
+            "plugs": []
+          },
+          {
+            "id": "n20699",
+            "type": "value",
+            "x": 485,
+            "y": 471.66666666666674,
+            "w": 170,
+            "h": 64,
+            "text": "Decrease",
+            "blockRole": null,
+            "plugs": []
+          },
+          {
+            "id": "n20700",
+            "type": "operator",
+            "x": 338,
+            "y": 437.5,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": ""
+          },
+          {
+            "id": "n20701",
+            "type": "periodShift",
+            "x": 236,
+            "y": 437.5,
+            "w": 56,
+            "h": 56,
+            "shift": -1
+          },
+          {
+            "id": "n20702",
+            "type": "operator",
+            "x": 817.5,
+            "y": 399.33333333333337,
+            "w": 56,
+            "h": 56,
+            "text": "×",
+            "socket": ""
+          },
+          {
+            "id": "n20703",
+            "type": "alias",
+            "x": 896,
+            "y": 476.66666666666674,
+            "w": 170,
+            "h": 64,
+            "sourceCanvasId": "c371",
+            "sourceNodeId": "n20696",
+            "plugs": []
+          },
+          {
+            "id": "n20704",
+            "type": "value",
+            "x": 281,
+            "y": 712,
+            "w": 170,
+            "h": 64,
+            "text": "Account Receivable",
+            "blockRole": "output",
+            "plugs": [
+              "to Total AR"
+            ]
+          },
+          {
+            "id": "n20705",
+            "type": "value",
+            "x": 1156,
+            "y": 839,
+            "w": 170,
+            "h": 64,
+            "text": "delta AR",
+            "blockRole": "output",
+            "plugs": [
+              "to delta NWC"
+            ],
+            "verticalReducer": "sum"
+          },
+          {
+            "id": "n20706",
+            "type": "alias",
+            "x": 615,
+            "y": 761,
+            "w": 170,
+            "h": 64,
+            "sourceCanvasId": "c371",
+            "sourceNodeId": "n20698",
+            "plugs": []
+          },
+          {
+            "id": "n20707",
+            "type": "alias",
+            "x": 615,
+            "y": 839,
+            "w": 170,
+            "h": 64,
+            "sourceCanvasId": "c371",
+            "sourceNodeId": "n20699",
+            "plugs": []
+          },
+          {
+            "id": "n20708",
+            "type": "operator",
+            "x": 847,
+            "y": 843,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": ""
+          },
+          {
+            "id": "n20709",
+            "type": "value",
+            "x": 861,
+            "y": 321,
+            "w": 170,
+            "h": 64,
+            "text": "Revenue",
+            "plugs": [],
+            "blockRole": "input"
+          },
+          {
+            "id": "n20710",
+            "type": "value",
+            "x": 437,
+            "y": 176,
+            "w": 170,
+            "h": 64,
+            "text": "Outstanding rate\n0",
+            "plugs": [],
+            "style": {
+              "numberFormat": {
+                "kind": "percent",
+                "decimals": 1,
+                "currencySymbol": "$"
+              },
+              "fill": null,
+              "border": {
+                "color": "#94a3b8",
+                "width": 1.5,
+                "style": "none"
+              },
+              "font": {
+                "family": "",
+                "size": 14,
+                "weight": "normal",
+                "color": "#1e2937"
+              }
+            }
+          },
+          {
+            "id": "n20711",
+            "type": "operator",
+            "x": 494,
+            "y": 84,
+            "w": 56,
+            "h": 56,
+            "text": "÷",
+            "socket": ""
+          },
+          {
+            "id": "n20712",
+            "type": "value",
+            "x": 578.75,
+            "y": 84,
+            "w": 170,
+            "h": 64,
+            "text": "Days in a period",
+            "plugs": [],
+            "periodValues": [
+              365,
+              365,
+              365,
+              365,
+              365,
+              365,
+              365,
+              365,
+              365,
+              365
+            ],
+            "periodValuesRange": {
+              "min": 0,
+              "max": 365
+            },
+            "blockRole": "input"
+          },
+          {
+            "id": "n20713",
+            "type": "alias",
+            "x": 647,
+            "y": 321,
+            "w": 170,
+            "h": 64,
+            "sourceCanvasId": "c371",
+            "sourceNodeId": "n20710",
+            "plugs": []
+          },
+          {
+            "id": "n20714",
+            "type": "function",
+            "x": 935.75,
+            "y": 829,
+            "w": 190,
+            "h": 74,
+            "fn": {
+              "family": "f9562bd4-051d-476c-932c-bfb007fb1456",
+              "version": 1,
+              "versionId": "e4e2428f-061c-4f21-998c-83eedf4495cc",
+              "name": "Negatize"
+            }
+          },
+          {
+            "id": "n20715",
+            "type": "function",
+            "x": 683.5,
+            "y": 471.66666666666674,
+            "w": 190,
+            "h": 74,
+            "fn": {
+              "family": "f9562bd4-051d-476c-932c-bfb007fb1456",
+              "version": 1,
+              "versionId": "e4e2428f-061c-4f21-998c-83eedf4495cc",
+              "name": "Negatize"
+            }
+          },
+          {
+            "id": "n20716",
+            "type": "operator",
+            "x": 840.5,
+            "y": 88,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "to Days in a Period"
+          }
+        ],
+        "edges": [
+          {
+            "id": "e20719",
+            "from": "n20696",
+            "to": "n20700"
+          },
+          {
+            "id": "e20720",
+            "from": "n20698",
+            "to": "n20700"
+          },
+          {
+            "id": "e20721",
+            "from": "n20697",
+            "to": "n20701"
+          },
+          {
+            "id": "e20722",
+            "from": "n20701",
+            "to": "n20696"
+          },
+          {
+            "id": "e20723",
+            "from": "n20702",
+            "to": "n20698"
+          },
+          {
+            "id": "e20724",
+            "from": "n20699",
+            "to": "n20700"
+          },
+          {
+            "id": "e20725",
+            "from": "n20700",
+            "to": "n20697"
+          },
+          {
+            "id": "e20726",
+            "from": "n20697",
+            "to": "n20704"
+          },
+          {
+            "id": "e20727",
+            "from": "n20706",
+            "to": "n20708"
+          },
+          {
+            "id": "e20728",
+            "from": "n20707",
+            "to": "n20708"
+          },
+          {
+            "id": "e20729",
+            "from": "n20709",
+            "to": "n20702"
+          },
+          {
+            "id": "e20730",
+            "from": "n20712",
+            "to": "n20711"
+          },
+          {
+            "id": "e20731",
+            "from": "n20711",
+            "to": "n20710"
+          },
+          {
+            "id": "e20732",
+            "from": "n20695",
+            "to": "n20711"
+          },
+          {
+            "id": "e20733",
+            "from": "n20713",
+            "to": "n20702"
+          },
+          {
+            "id": "e20734",
+            "from": "n20708",
+            "to": "n20714",
+            "toPort": 0
+          },
+          {
+            "id": "e20735",
+            "from": "n20714",
+            "to": "n20705"
+          },
+          {
+            "id": "e20736",
+            "from": "n20703",
+            "to": "n20715",
+            "toPort": 0
+          },
+          {
+            "id": "e20737",
+            "from": "n20715",
+            "to": "n20699"
+          },
+          {
+            "id": "e20738",
+            "from": "n20716",
+            "to": "n20712"
+          }
+        ],
+        "functions": [
+          {
+            "family": "f9562bd4-051d-476c-932c-bfb007fb1456",
+            "version": 1,
+            "versionId": "e4e2428f-061c-4f21-998c-83eedf4495cc",
+            "text": "Negatize(Number) = -1 * Number",
+            "description": "Flip sign by x -1",
+            "note": "",
+            "calls": []
+          }
+        ]
+      },
+      "attachments": {
+        "excel": {
+          "family": "9e9f5629-f599-4a84-8816-e62f75ed52d0",
+          "name": "AR",
+          "rows": [
+            {
+              "name": "dso",
+              "section": "input",
+              "include": true,
+              "constant": false
+            },
+            {
+              "name": "days in a period",
+              "section": "calc",
+              "include": true,
+              "constant": false
+            },
+            {
+              "name": "outstanding rate",
+              "section": "output",
+              "include": true,
+              "constant": false
+            },
+            {
+              "name": "beginning balance",
+              "section": "calc",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "revenue",
+              "section": "calc",
+              "include": true,
+              "constant": false
+            },
+            {
+              "name": "increase",
+              "section": "calc",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "decrease",
+              "section": "calc",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "ar ending balance",
+              "section": "calc",
+              "include": true,
+              "constant": false,
+              "style": {
+                "fill": null,
+                "font": {
+                  "color": "#475569",
+                  "weight": "normal"
+                },
+                "border": {
+                  "color": "#94a3b8",
+                  "style": "solid",
+                  "sides": [
+                    "top"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "account receivable",
+              "section": "output",
+              "include": true,
+              "constant": false
+            },
+            {
+              "name": "delta ar",
+              "section": "output",
+              "include": true,
+              "constant": false
+            }
+          ],
+          "customs": [
+            {
+              "label": "",
+              "section": "calc",
+              "showPeriodLabels": false
+            },
+            {
+              "label": "",
+              "section": "output",
+              "showPeriodLabels": false
+            }
+          ],
+          "sectioned": [
+            "r0",
+            "r1",
+            "r4",
+            "r3",
+            "r5",
+            "r6",
+            "r7",
+            "c0",
+            "r2",
+            "r8",
+            "r9",
+            "c1"
+          ],
+          "flat": [
+            "r0",
+            "r1",
+            "r2",
+            "r4",
+            "c0",
+            "r3",
+            "r5",
+            "r6",
+            "r7",
+            "c1",
+            "r8",
+            "r9"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Days in a Period",
+      "description": "",
+      "group": "Inputs - Common",
+      "kind": "module",
+      "family": "a9e0e655-3f6c-4c3f-94ff-d022c8638777",
+      "version": 1,
+      "note": "",
+      "versionId": "2a6de0c2-c955-4206-8de8-f3a8fbb3940a",
+      "data": {
+        "version": 7,
+        "kind": "module",
+        "name": "Days in a Period",
+        "selfCanvasId": "c120",
+        "nextId": 6066,
+        "nodes": [
+          {
+            "id": "n6028",
+            "type": "value",
+            "x": 143.5,
+            "y": 67,
+            "w": 170,
+            "h": 64,
+            "text": "Days in a Period",
+            "plugs": [
+              "to Days in a Period"
+            ],
+            "periodValues": [
+              365,
+              365,
+              365,
+              365,
+              365,
+              365,
+              365,
+              365,
+              365,
+              365
+            ],
+            "periodValuesRange": {
+              "min": 0,
+              "max": 1
+            }
+          }
+        ],
+        "edges": []
+      }
+    },
+    {
+      "name": "Loan Interest",
+      "description": "",
+      "group": "Transactions",
+      "kind": "module",
+      "family": "95e44fe5-61a4-413f-8b81-666cbc718030",
+      "version": 2,
+      "note": "Interest payment",
+      "versionId": "5a5e0298-afcc-4f53-a3ff-3120fd7f07fd",
+      "data": {
+        "version": 7,
+        "kind": "module",
+        "name": "Loan Interest",
+        "selfCanvasId": "c310",
+        "nextId": 17167,
+        "nodes": [
+          {
+            "id": "n15378",
+            "type": "value",
+            "x": 122,
+            "y": 49,
+            "w": 170,
+            "h": 64,
+            "text": "BB Loan",
+            "plugs": []
+          },
+          {
+            "id": "n15379",
+            "type": "value",
+            "x": 122,
+            "y": 286,
+            "w": 170,
+            "h": 64,
+            "text": "EB Loan",
+            "blockRole": "output",
+            "plugs": [
+              "to Total Loan"
+            ]
+          },
+          {
+            "id": "n15380",
+            "type": "value",
+            "x": 326,
+            "y": 129.33333333333334,
+            "w": 170,
+            "h": 64,
+            "text": "Draw down",
+            "blockRole": "input",
+            "plugs": [
+              "to CF debt DD"
+            ],
+            "periodValues": [
+              100,
+              100,
+              50,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "periodValuesRange": {
+              "min": 0,
+              "max": 100
+            }
+          },
+          {
+            "id": "n15381",
+            "type": "value",
+            "x": 326,
+            "y": 205.66666666666669,
+            "w": 170,
+            "h": 64,
+            "text": "Repayment",
+            "blockRole": "input",
+            "plugs": [
+              "to cf debt repayment"
+            ]
+          },
+          {
+            "id": "n15383",
+            "type": "operator",
+            "x": 179,
+            "y": 133.33333333333334,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": ""
+          },
+          {
+            "id": "n15384",
+            "type": "periodShift",
+            "x": 77,
+            "y": 171.5,
+            "w": 56,
+            "h": 56,
+            "shift": -1
+          },
+          {
+            "id": "n15433",
+            "type": "value",
+            "x": 584,
+            "y": 205.66666666666669,
+            "w": 170,
+            "h": 64,
+            "text": "Repayment shcedule",
+            "blockRole": "input",
+            "plugs": [],
+            "periodValues": [
+              0,
+              0,
+              0,
+              0,
+              50,
+              50,
+              50,
+              50,
+              50,
+              0
+            ],
+            "periodValuesRange": {
+              "min": 0,
+              "max": 1
+            }
+          },
+          {
+            "id": "n15474",
+            "type": "function",
+            "x": 454,
+            "y": 286,
+            "w": 190,
+            "h": 74,
+            "fn": {
+              "family": "f9562bd4-051d-476c-932c-bfb007fb1456",
+              "version": 1,
+              "versionId": "e4e2428f-061c-4f21-998c-83eedf4495cc",
+              "name": "Negatize"
+            }
+          },
+          {
+            "id": "n15612",
+            "type": "value",
+            "x": 452,
+            "y": 458,
+            "w": 170,
+            "h": 64,
+            "text": "Interest rate",
+            "plugs": [],
+            "periodValues": [
+              0.05,
+              0.05,
+              0.05,
+              0.05,
+              0.05,
+              0.05,
+              0.05,
+              0.05,
+              0.05,
+              0.05
+            ],
+            "periodValuesRange": {
+              "min": 0,
+              "max": 1
+            },
+            "style": {
+              "numberFormat": {
+                "kind": "percent",
+                "decimals": 1,
+                "currencySymbol": "$"
+              },
+              "fill": "#eff6ff",
+              "border": {
+                "color": "#93c5fd",
+                "width": 1.5,
+                "style": "solid"
+              },
+              "font": {
+                "family": "",
+                "size": 14,
+                "weight": "normal",
+                "color": "#1e3a8a"
+              }
+            }
+          },
+          {
+            "id": "n15613",
+            "type": "value",
+            "x": 287,
+            "y": 557,
+            "w": 170,
+            "h": 64,
+            "text": "Interest Expense",
+            "plugs": [
+              "Total net interest expesnse"
+            ]
+          },
+          {
+            "id": "n15614",
+            "type": "operator",
+            "x": 344,
+            "y": 462,
+            "w": 56,
+            "h": 56,
+            "text": "×",
+            "socket": ""
+          },
+          {
+            "id": "n15615",
+            "type": "alias",
+            "x": 122,
+            "y": 458,
+            "w": 170,
+            "h": 64,
+            "sourceCanvasId": "c310",
+            "sourceNodeId": "n15378",
+            "plugs": []
+          },
+          {
+            "id": "n16689",
+            "type": "value",
+            "x": 287,
+            "y": 660,
+            "w": 170,
+            "h": 64,
+            "text": "Interest Payment",
+            "plugs": [
+              "to CF interest payment"
+            ]
+          },
+          {
+            "id": "n16755",
+            "type": "function",
+            "x": 500,
+            "y": 599,
+            "w": 190,
+            "h": 74,
+            "fn": {
+              "family": "f9562bd4-051d-476c-932c-bfb007fb1456",
+              "version": 1,
+              "versionId": "e4e2428f-061c-4f21-998c-83eedf4495cc",
+              "name": "Negatize"
+            }
+          }
+        ],
+        "edges": [
+          {
+            "id": "e15385",
+            "from": "n15378",
+            "to": "n15383"
+          },
+          {
+            "id": "e15386",
+            "from": "n15380",
+            "to": "n15383"
+          },
+          {
+            "id": "e15390",
+            "from": "n15379",
+            "to": "n15384"
+          },
+          {
+            "id": "e15391",
+            "from": "n15384",
+            "to": "n15378"
+          },
+          {
+            "id": "e15431",
+            "from": "n15381",
+            "to": "n15383"
+          },
+          {
+            "id": "e15432",
+            "from": "n15383",
+            "to": "n15379"
+          },
+          {
+            "id": "e15475",
+            "from": "n15433",
+            "to": "n15474",
+            "toPort": 0
+          },
+          {
+            "id": "e15476",
+            "from": "n15474",
+            "to": "n15381"
+          },
+          {
+            "id": "e15616",
+            "from": "n15615",
+            "to": "n15614"
+          },
+          {
+            "id": "e15617",
+            "from": "n15612",
+            "to": "n15614"
+          },
+          {
+            "id": "e15618",
+            "from": "n15614",
+            "to": "n15613"
+          },
+          {
+            "id": "e16756",
+            "from": "n15613",
+            "to": "n16755",
+            "toPort": 0
+          },
+          {
+            "id": "e16757",
+            "from": "n16755",
+            "to": "n16689"
+          }
+        ],
+        "functions": [
+          {
+            "family": "f9562bd4-051d-476c-932c-bfb007fb1456",
+            "version": 1,
+            "versionId": "e4e2428f-061c-4f21-998c-83eedf4495cc",
+            "text": "Negatize(Number) = -1 * Number",
+            "description": "Flip sign by x -1",
+            "note": "",
+            "calls": []
+          }
+        ]
+      },
+      "attachments": {
+        "excel": {
+          "family": "95e44fe5-61a4-413f-8b81-666cbc718030",
+          "name": "Loan Interest",
+          "rows": [
+            {
+              "name": "bb loan",
+              "section": "calc",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "draw down",
+              "section": "input",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "repayment",
+              "section": "calc",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "repayment shcedule",
+              "section": "input",
+              "include": true,
+              "constant": false
+            },
+            {
+              "name": "eb loan",
+              "section": "calc",
+              "include": true,
+              "constant": false,
+              "style": {
+                "fill": null,
+                "font": {
+                  "color": "#475569",
+                  "weight": "normal"
+                },
+                "border": {
+                  "color": "#94a3b8",
+                  "style": "solid",
+                  "sides": [
+                    "top"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "interest rate",
+              "section": "input",
+              "include": true,
+              "constant": false
+            },
+            {
+              "name": "interest expense",
+              "section": "output",
+              "include": true,
+              "constant": false
+            },
+            {
+              "name": "interest payment",
+              "section": "output",
+              "include": true,
+              "constant": false
+            }
+          ],
+          "customs": [
+            {
+              "label": "",
+              "section": "calc",
+              "showPeriodLabels": false
+            },
+            {
+              "label": "",
+              "section": "input",
+              "showPeriodLabels": false
+            }
+          ],
+          "sectioned": [
+            "r3",
+            "r1",
+            "r5",
+            "c1",
+            "r0",
+            "r2",
+            "r4",
+            "c0",
+            "r7",
+            "r6"
+          ],
+          "flat": [
+            "r3",
+            "c0",
+            "r0",
+            "r1",
+            "r2",
+            "r4",
+            "c1",
+            "r5",
+            "r6",
+            "r7"
+          ]
+        }
+      }
+    }
+  ],
+  "functions": []
+}
