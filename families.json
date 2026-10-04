@@ -49,6 +49,38 @@
       "firstPack": "c526c522-a94f-4c62-8c03-add8dfc7444d",
       "added": "2026-10-04"
     },
+    "95e44fe5-61a4-413f-8b81-666cbc718030": {
+      "type": "template",
+      "kind": "module",
+      "accountId": 333327860,
+      "account": "taroyamakatrmttm-star",
+      "firstPack": "035b03a9-cca5-473e-b112-ffc0d33d5f53",
+      "added": "2026-10-04"
+    },
+    "9e9f5629-f599-4a84-8816-e62f75ed52d0": {
+      "type": "template",
+      "kind": "module",
+      "accountId": 333327860,
+      "account": "taroyamakatrmttm-star",
+      "firstPack": "035b03a9-cca5-473e-b112-ffc0d33d5f53",
+      "added": "2026-10-04"
+    },
+    "a2f3f5e8-7d5b-454e-9c53-115dd20e78f8": {
+      "type": "template",
+      "kind": "module",
+      "accountId": 333327860,
+      "account": "taroyamakatrmttm-star",
+      "firstPack": "035b03a9-cca5-473e-b112-ffc0d33d5f53",
+      "added": "2026-10-04"
+    },
+    "a9e0e655-3f6c-4c3f-94ff-d022c8638777": {
+      "type": "template",
+      "kind": "module",
+      "accountId": 333327860,
+      "account": "taroyamakatrmttm-star",
+      "firstPack": "035b03a9-cca5-473e-b112-ffc0d33d5f53",
+      "added": "2026-10-04"
+    },
     "b3a36d3b-87ed-4405-96f0-1086887917bb": {
       "type": "template",
       "kind": "module",
@@ -80,6 +112,14 @@
       "firstPack": "dab0e7a7-139e-430d-bff6-6dc405066113",
       "added": "2026-09-27"
     },
+    "f1807494-af31-42b2-801f-0bd8ca0680b8": {
+      "type": "template",
+      "kind": "module",
+      "accountId": 333327860,
+      "account": "taroyamakatrmttm-star",
+      "firstPack": "035b03a9-cca5-473e-b112-ffc0d33d5f53",
+      "added": "2026-10-04"
+    },
     "f6133f9a-26d1-45a8-a3e1-7a9f319ddf27": {
       "type": "template",
       "kind": "module",
@@ -87,6 +127,14 @@
       "account": "taroyamakatrmttm-star",
       "firstPack": "dab0e7a7-139e-430d-bff6-6dc405066113",
       "added": "2026-09-27"
+    },
+    "f72d248f-d3ad-4079-81ea-7902a8431e2c": {
+      "type": "template",
+      "kind": "recipe",
+      "accountId": 333327860,
+      "account": "taroyamakatrmttm-star",
+      "firstPack": "035b03a9-cca5-473e-b112-ffc0d33d5f53",
+      "added": "2026-10-04"
     },
     "fb2584b4-7497-4a80-815d-a664add3cd27": {
       "type": "template",
