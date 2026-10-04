@@ -18,7 +18,7 @@ fmIDE shows where each item came from, including its author and pack, in the Tem
 1. In fmIDE, **File → Save as Library Pack…**: give it a title, your author name (always the same one), a description and tags, and tick what to share. A recipe takes its parts along, and a function takes the functions it calls.
 2. Read the [submission terms](SUBMITTING.md). By submitting, you agree to them and license your items under CC BY 4.0.
 3. Open a pull request that adds your file to `packs/`, **named after its pack id**: `packs/<pack id>.fmide-pack.json`. Tick the box in the pull-request template.
-4. The automatic check posts a report on the pull request. If it lists **records to add**, add those entries to `families.json`, `authors.json` and `packs.json` exactly as shown (or leave them for the maintainer to add).
+4. The automatic check posts a report on the pull request. You never edit `families.json`, `authors.json` or `packs.json`: the report lists your pack's records, and they are written automatically when the pull request is merged.
 5. The maintainer reviews every pack and merges it. Once merged, a pack is **never edited**: to share a new version, save a new pack.
 
 ## The rules
@@ -53,7 +53,8 @@ A takedown removes the pack file from the library and from the catalogue. Its re
 ## For the maintainer
 
 - **Approving a submission:** read the check's comment. Its summary lists the account, the new pack and the families it claims. Look at the pack's content, then merge.
-- **Adding records yourself:** in a checkout of fmIDE at the commit in `checker.json`, run `node tools/check-pack.js --library PATH/TO/fmide-library --write-records --account LOGIN --account-id ID` with the submitter's login and numeric id (shown in the check's comment), then commit the three record files to the pull request.
+- **Records are written automatically:** after a merge into `main`, the check's job `records` writes the records of the packs that merge added, for the GitHub account that opened the pull request (or that pushed, for your own push to `main`), and commits them to `main` as github-actions. It writes nothing when anything else is wrong, or when a pack it didn't just add lacks records; the job then fails and says why.
+- **Adding records yourself** (only if that job failed): in a checkout of fmIDE at the commit in `checker.json`, run `node tools/check-pack.js --library PATH/TO/fmide-library --write-records --account LOGIN --account-id ID` with the submitter's login and numeric id (shown in the check's comment), then commit the three record files to `main`.
 - **A takedown:** a pull request of its own that only deletes the pack file. It leaves the catalogue when fmIDE's pointer is moved past it (below).
 - **Publishing to the catalogue:** the catalogue is built by fmIDE from this repository, which fmIDE holds as a git submodule (`library/`) pinned to one commit. After merging here, in fmIDE run `git submodule update --remote library` and open a pull request with that one change. fmIDE's build checks every pack again (nothing is published if one fails); the pull request's preview shows the new catalogue, and merging it updates the live site.
 - **Moving to a newer checker:** a pull request that changes `fmide.commit` in `checker.json` to a newer fmIDE commit. It takes effect once merged, because checks always read `checker.json` from `main`.

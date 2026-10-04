@@ -12,6 +12,11 @@
 #   pull request), passed through environment variables, never written into a command line.
 # - The report quotes pack text only inside one fenced block, with every character that could
 #   close it escaped, so nothing from a pack renders in the comment.
+# - Records are never edited by hand: a pull request's check passes without the records its
+#   packs lack (--records-on-merge), and after the merge the job `records` writes them to main
+#   (--write-records) for the account that opened the pull request, as GitHub reports it. That
+#   job alone may write to the repository, it runs only on main (content the maintainer merged),
+#   and it writes only for the packs that pull request added.
 # While fmIDE is private, reading it needs the deploy key in the secret FMIDE_DEPLOY_KEY.
 name: Check library
 
@@ -27,10 +32,132 @@ permissions:
 
 concurrency:
   group: check-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
+  # Runs on main wait their turn: each may write records, and none is lost.
+  cancel-in-progress: ${{ github.event_name == 'pull_request_target' }}
 
 jobs:
+  # After a merge into main: write the records of the packs the merge added.
+  records:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      pull-requests: read
+    steps:
+      - name: The library as it is on main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: lib
+
+      - name: Which fmIDE checks it (checker.json on main)
+        id: checker
+        run: |
+          node -e '
+            const c = JSON.parse(require("fs").readFileSync("lib/checker.json", "utf8"));
+            const repo = c && c.fmide && c.fmide.repository, commit = c && c.fmide && c.fmide.commit;
+            if(!/^[A-Za-z0-9-]{1,39}\/[A-Za-z0-9._-]{1,100}$/.test(repo || "") || !/^[0-9a-f]{40}$/.test(commit || "")) {
+              console.log("::error::checker.json must name fmIDE'"'"'s repository and a full 40-character commit id.");
+              process.exit(1);
+            }
+            require("fs").appendFileSync(process.env.GITHUB_OUTPUT, "repository=" + repo + "\ncommit=" + commit + "\n");
+          '
+
+      - name: fmIDE's checker, at that commit
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ steps.checker.outputs.repository }}
+          ref: ${{ steps.checker.outputs.commit }}
+          path: fmide
+          ssh-key: ${{ secrets.FMIDE_DEPLOY_KEY }}
+          persist-credentials: false
+          sparse-checkout: |
+            tools
+            src/shared
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      - name: Who shared it, and which packs it added (from GitHub, never from the files)
+        id: who
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          SHA: ${{ github.sha }}
+          BEFORE: ${{ github.event.before }}
+          SENDER: ${{ github.event.sender.login }}
+          SENDER_ID: ${{ github.event.sender.id }}
+        run: |
+          # The pull request this push merged; a maintainer's own push to main has none.
+          gh api "repos/$REPO/commits/$SHA/pulls" > pulls.json
+          node -e '
+            const pulls = JSON.parse(require("fs").readFileSync("pulls.json", "utf8"));
+            const pr = pulls.find(p => p.merged_at && p.merge_commit_sha === process.env.SHA);
+            const out = pr ? { number: pr.number, login: pr.user.login, id: pr.user.id } : { number: "", login: process.env.SENDER, id: Number(process.env.SENDER_ID) };
+            require("fs").writeFileSync("who.json", JSON.stringify(out));
+          '
+          number=$(node -p 'require("./who.json").number')
+          if [ -n "$number" ]; then
+            gh api "repos/$REPO/pulls/$number/files" --paginate --jq '.[] | select(.status == "added") | .filename' > added.txt
+          elif printf '%s' "$BEFORE" | grep -Eq '^0+$'; then
+            : > added.txt
+          else
+            gh api "repos/$REPO/compare/$BEFORE...$SHA" --jq '.files[] | select(.status == "added") | .filename' > added.txt
+          fi
+          node -e '
+            const who = require("./who.json");
+            if(!/^[A-Za-z0-9](?:[A-Za-z0-9-]{0,38})$/.test(who.login || "") || !Number.isSafeInteger(who.id) || who.id < 1) { console.log("::error::Could not tell which GitHub account shared this."); process.exit(1); }
+            const fs = require("fs"), out = process.env.GITHUB_OUTPUT;
+            fs.appendFileSync(out, "login=" + who.login + "\nid=" + who.id + "\nnumber=" + who.number + "\n");
+          '
+
+      - name: Write the records the new packs lack
+        id: write
+        env:
+          LOGIN: ${{ steps.who.outputs.login }}
+          ACCOUNT_ID: ${{ steps.who.outputs.id }}
+        run: |
+          set +e
+          node fmide/tools/check-pack.js --library lib --account "$LOGIN" --account-id "$ACCOUNT_ID" --json > before.json
+          set -e
+          # Only the packs this push added may get records, and only for the account that shared them.
+          node -e '
+            const r = JSON.parse(require("fs").readFileSync("before.json", "utf8"));
+            const added = require("fs").readFileSync("added.txt", "utf8").split("\n")
+              .map(f => (/^packs\/([^/]+)\.fmide-pack\.json$/.exec(f) || [])[1]).filter(Boolean);
+            const missing = Object.keys((r.recordsToAdd && r.recordsToAdd.packs) || {});
+            const others = missing.filter(id => !added.includes(id));
+            if(others.length) { console.log("::error::Packs without records that this push did not add: " + others.join(", ") + ". A maintainer adds their records."); process.exit(1); }
+            require("fs").writeFileSync("missing.txt", missing.join(" "));
+          '
+          if [ ! -s missing.txt ]; then echo "No records to write."; exit 0; fi
+          echo "packs=$(cat missing.txt)" >> "$GITHUB_OUTPUT"
+          node fmide/tools/check-pack.js --library lib --write-records --account "$LOGIN" --account-id "$ACCOUNT_ID"
+
+      - name: Commit them to main
+        if: steps.write.outputs.packs != ''
+        env:
+          LOGIN: ${{ steps.who.outputs.login }}
+          NUMBER: ${{ steps.who.outputs.number }}
+          PACKS: ${{ steps.write.outputs.packs }}
+        working-directory: lib
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add families.json authors.json packs.json
+          from=${NUMBER:+" (pull request #$NUMBER)"}
+          git commit -q -m "Records for the pack $PACKS, shared by $LOGIN$from" -m "Written by the library's check (check-pack.js --write-records) after the merge."
+          for i in 1 2 3; do
+            git push origin HEAD:main && exit 0
+            git pull -q --rebase origin main
+          done
+          echo "::error::Could not push the records to main."; exit 1
+
   check:
+    needs: records
+    if: ${{ !cancelled() && needs.records.result != 'failure' }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:
@@ -40,7 +167,8 @@ jobs:
       - name: The library as it is on main
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.base.sha || github.sha }}
+          # On main, the latest: the records just written included.
+          ref: ${{ github.event.pull_request.base.sha || (github.event_name == 'push' && 'main') || github.sha }}
           path: base
           persist-credentials: false
 
@@ -94,7 +222,7 @@ jobs:
           PR_BODY: ${{ github.event.pull_request.body }}
         run: |
           set +e
-          node fmide/tools/check-pack.js --library head --base base --account "$ACCOUNT" --account-id "$ACCOUNT_ID" --markdown > report.md
+          node fmide/tools/check-pack.js --library head --base base --account "$ACCOUNT" --account-id "$ACCOUNT_ID" --records-on-merge --markdown > report.md
           status=$?
           set -e
           # Only the checker's own output and fixed text go into the comment.
