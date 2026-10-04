@@ -1,0 +1,5166 @@
+{
+  "kind": "fmIDE-library-pack",
+  "version": 4,
+  "pack": {
+    "id": "c526c522-a94f-4c62-8c03-add8dfc7444d",
+    "title": "Three-Statement Model v01",
+    "author": "TRMTTM",
+    "licence": "CC-BY-4.0",
+    "description": "Income statement, balance sheet, and cash flow statement into one dynamically connected financial model",
+    "tags": [
+      "inocme statement",
+      "balance sheet",
+      "cash flow statement",
+      "cash flow water fall",
+      "cfwf"
+    ],
+    "created": "2026-10-04"
+  },
+  "templates": [
+    {
+      "name": "Three Statements",
+      "description": "IS BS CF",
+      "group": "Financial Statement",
+      "kind": "recipe",
+      "family": "be7df1bc-aa2f-4542-b690-f04a74d3c52c",
+      "version": 3,
+      "note": "",
+      "versionId": "779c7207-ff38-4ad4-98be-d4644a09eab8",
+      "data": {
+        "kind": "recipe",
+        "parts": [
+          {
+            "family": "70ce862a-538a-4040-b6d3-98493f32f959",
+            "version": "latest",
+            "name": "Income Statement"
+          },
+          {
+            "family": "5592ec75-0ce9-48d7-88a1-377eb2b59d9a",
+            "version": "latest",
+            "name": "Balance Sheet"
+          },
+          {
+            "family": "669f5bdb-c88b-41b2-b74c-8298ce5c3929",
+            "version": "latest",
+            "name": "Cash flow statement"
+          },
+          {
+            "family": "0b56419b-a0d3-41b0-baeb-5ad2db2fc673",
+            "version": "latest",
+            "name": "Retained Earnings"
+          },
+          {
+            "family": "b3a36d3b-87ed-4405-96f0-1086887917bb",
+            "version": "latest",
+            "name": "CFWF"
+          },
+          {
+            "family": "fb2584b4-7497-4a80-815d-a664add3cd27",
+            "version": "latest",
+            "name": "Revolver"
+          },
+          {
+            "family": "f6133f9a-26d1-45a8-a3e1-7a9f319ddf27",
+            "version": "latest",
+            "name": "Audit BS"
+          },
+          {
+            "family": "88720329-86aa-44b0-a79d-3764ae6644b7",
+            "version": "latest",
+            "name": "Audit CFWF"
+          },
+          {
+            "family": "d93517f8-7e53-4fef-a42f-56fffd2c14c9",
+            "version": "latest",
+            "name": "Tolerance"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Income Statement",
+      "description": "Income Statement",
+      "group": "Financial Statement",
+      "kind": "module",
+      "family": "70ce862a-538a-4040-b6d3-98493f32f959",
+      "version": 5,
+      "note": "Plug fixed (EBT vs EBIT)",
+      "versionId": "f7fe8690-13c3-489a-ae86-38b197f1ba13",
+      "data": {
+        "version": 7,
+        "kind": "module",
+        "name": "Income Statement",
+        "selfCanvasId": "c303",
+        "nextId": 17108,
+        "nodes": [
+          {
+            "id": "n14717",
+            "type": "value",
+            "x": 652.5,
+            "y": 114.5,
+            "w": 170,
+            "h": 64,
+            "text": "Revenue",
+            "plugs": []
+          },
+          {
+            "id": "n14718",
+            "type": "value",
+            "x": 439.5,
+            "y": 201.1,
+            "w": 170,
+            "h": 64,
+            "text": "COGS",
+            "plugs": []
+          },
+          {
+            "id": "n14719",
+            "type": "value",
+            "x": 652.5,
+            "y": 287.7,
+            "w": 170,
+            "h": 64,
+            "text": "Gross Profit",
+            "plugs": []
+          },
+          {
+            "id": "n14720",
+            "type": "value",
+            "x": 439.5,
+            "y": 287.7,
+            "w": 170,
+            "h": 64,
+            "text": "SGA",
+            "plugs": []
+          },
+          {
+            "id": "n14721",
+            "type": "value",
+            "x": 439.5,
+            "y": 351.4230769230769,
+            "w": 170,
+            "h": 64,
+            "text": "Other income",
+            "plugs": []
+          },
+          {
+            "id": "n14722",
+            "type": "value",
+            "x": 439.5,
+            "y": 406.1615384615385,
+            "w": 170,
+            "h": 64,
+            "text": "Other expense",
+            "plugs": []
+          },
+          {
+            "id": "n14723",
+            "type": "value",
+            "x": 439.5,
+            "y": 460.9000000000001,
+            "w": 170,
+            "h": 64,
+            "text": "Add back DA",
+            "plugs": []
+          },
+          {
+            "id": "n14724",
+            "type": "value",
+            "x": 652.5,
+            "y": 460.9000000000001,
+            "w": 170,
+            "h": 64,
+            "text": "EBITDA",
+            "plugs": []
+          },
+          {
+            "id": "n14725",
+            "type": "value",
+            "x": 439.5,
+            "y": 547.5,
+            "w": 170,
+            "h": 64,
+            "text": "DA",
+            "plugs": []
+          },
+          {
+            "id": "n14726",
+            "type": "value",
+            "x": 652.5,
+            "y": 634.1,
+            "w": 170,
+            "h": 64,
+            "text": "EBIT",
+            "plugs": [
+              "to EBIT"
+            ]
+          },
+          {
+            "id": "n14727",
+            "type": "value",
+            "x": 439.5,
+            "y": 720.7,
+            "w": 170,
+            "h": 64,
+            "text": "Interest income / expense",
+            "plugs": []
+          },
+          {
+            "id": "n14728",
+            "type": "value",
+            "x": 652.5,
+            "y": 807.3000000000001,
+            "w": 170,
+            "h": 64,
+            "text": "EBT",
+            "plugs": []
+          },
+          {
+            "id": "n14729",
+            "type": "value",
+            "x": 652.5,
+            "y": 980.5,
+            "w": 170,
+            "h": 64,
+            "text": "Net Income",
+            "plugs": [
+              "Net Income"
+            ]
+          },
+          {
+            "id": "n14730",
+            "type": "value",
+            "x": 439.5,
+            "y": 893.9000000000001,
+            "w": 170,
+            "h": 64,
+            "text": "Income Tax",
+            "plugs": []
+          },
+          {
+            "id": "n14731",
+            "type": "operator",
+            "x": 709.5,
+            "y": 205.10000000000002,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": ""
+          },
+          {
+            "id": "n14732",
+            "type": "operator",
+            "x": 709.5,
+            "y": 378.3,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": ""
+          },
+          {
+            "id": "n14733",
+            "type": "operator",
+            "x": 709.5,
+            "y": 551.5,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": ""
+          },
+          {
+            "id": "n14734",
+            "type": "operator",
+            "x": 709.5,
+            "y": 724.7,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": ""
+          },
+          {
+            "id": "n14735",
+            "type": "operator",
+            "x": 709.5,
+            "y": 897.9000000000001,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": ""
+          },
+          {
+            "id": "n14736",
+            "type": "operator",
+            "x": 64.5,
+            "y": 118.5,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "Total Revenue"
+          },
+          {
+            "id": "n14737",
+            "type": "operator",
+            "x": 64.5,
+            "y": 209.10000000000002,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "Total COGS"
+          },
+          {
+            "id": "n14738",
+            "type": "operator",
+            "x": 64.5,
+            "y": 295.7,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "Total SGA"
+          },
+          {
+            "id": "n14739",
+            "type": "operator",
+            "x": 64.5,
+            "y": 357.17692307692306,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "Total Other income"
+          },
+          {
+            "id": "n14740",
+            "type": "operator",
+            "x": 64.5,
+            "y": 414.1615384615385,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "Total Other expense"
+          },
+          {
+            "id": "n14741",
+            "type": "operator",
+            "x": 64.5,
+            "y": 468.9000000000001,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "Total DA"
+          },
+          {
+            "id": "n14742",
+            "type": "operator",
+            "x": 64.5,
+            "y": 555.5,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "Total DA"
+          },
+          {
+            "id": "n14743",
+            "type": "operator",
+            "x": 64.5,
+            "y": 728.7,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "Total net interest expesnse"
+          },
+          {
+            "id": "n14744",
+            "type": "operator",
+            "x": 64.5,
+            "y": 897.9000000000001,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "Total income tax"
+          },
+          {
+            "id": "n14745",
+            "type": "value",
+            "x": 228,
+            "y": 49,
+            "w": 170,
+            "h": 64,
+            "text": "Negative one",
+            "periodValues": [
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1
+            ],
+            "periodValuesRange": {
+              "min": 0,
+              "max": 1
+            },
+            "plugs": []
+          },
+          {
+            "id": "n14746",
+            "type": "operator",
+            "x": 164,
+            "y": 205.10000000000002,
+            "w": 56,
+            "h": 56,
+            "text": "×",
+            "socket": ""
+          },
+          {
+            "id": "n14747",
+            "type": "operator",
+            "x": 205,
+            "y": 291.7,
+            "w": 56,
+            "h": 56,
+            "text": "×",
+            "socket": ""
+          },
+          {
+            "id": "n14748",
+            "type": "operator",
+            "x": 246,
+            "y": 414.1615384615385,
+            "w": 56,
+            "h": 56,
+            "text": "×",
+            "socket": ""
+          },
+          {
+            "id": "n14749",
+            "type": "operator",
+            "x": 287,
+            "y": 551.5,
+            "w": 56,
+            "h": 56,
+            "text": "×",
+            "socket": ""
+          },
+          {
+            "id": "n14750",
+            "type": "operator",
+            "x": 328,
+            "y": 724.7,
+            "w": 56,
+            "h": 56,
+            "text": "×",
+            "socket": ""
+          },
+          {
+            "id": "n14751",
+            "type": "operator",
+            "x": 369,
+            "y": 897.9000000000001,
+            "w": 56,
+            "h": 56,
+            "text": "×",
+            "socket": ""
+          },
+          {
+            "id": "n17049",
+            "type": "alias",
+            "auto": true,
+            "x": 0,
+            "y": 649,
+            "w": 170,
+            "h": 64,
+            "sourceCanvasId": "c310",
+            "sourceNodeId": "n15613",
+            "plugs": []
+          }
+        ],
+        "edges": [
+          {
+            "id": "e14754",
+            "from": "n14717",
+            "to": "n14731"
+          },
+          {
+            "id": "e14755",
+            "from": "n14718",
+            "to": "n14731"
+          },
+          {
+            "id": "e14756",
+            "from": "n14731",
+            "to": "n14719"
+          },
+          {
+            "id": "e14757",
+            "from": "n14719",
+            "to": "n14732"
+          },
+          {
+            "id": "e14758",
+            "from": "n14720",
+            "to": "n14732"
+          },
+          {
+            "id": "e14759",
+            "from": "n14721",
+            "to": "n14732"
+          },
+          {
+            "id": "e14760",
+            "from": "n14722",
+            "to": "n14732"
+          },
+          {
+            "id": "e14761",
+            "from": "n14723",
+            "to": "n14732"
+          },
+          {
+            "id": "e14762",
+            "from": "n14732",
+            "to": "n14724"
+          },
+          {
+            "id": "e14763",
+            "from": "n14724",
+            "to": "n14733"
+          },
+          {
+            "id": "e14764",
+            "from": "n14733",
+            "to": "n14726"
+          },
+          {
+            "id": "e14765",
+            "from": "n14725",
+            "to": "n14733"
+          },
+          {
+            "id": "e14766",
+            "from": "n14727",
+            "to": "n14734"
+          },
+          {
+            "id": "e14767",
+            "from": "n14726",
+            "to": "n14734"
+          },
+          {
+            "id": "e14768",
+            "from": "n14728",
+            "to": "n14735"
+          },
+          {
+            "id": "e14769",
+            "from": "n14735",
+            "to": "n14729"
+          },
+          {
+            "id": "e14770",
+            "from": "n14730",
+            "to": "n14735"
+          },
+          {
+            "id": "e14771",
+            "from": "n14736",
+            "to": "n14717"
+          },
+          {
+            "id": "e14772",
+            "from": "n14739",
+            "to": "n14721"
+          },
+          {
+            "id": "e14773",
+            "from": "n14741",
+            "to": "n14723"
+          },
+          {
+            "id": "e14774",
+            "from": "n14734",
+            "to": "n14728"
+          },
+          {
+            "id": "e14775",
+            "from": "n14745",
+            "to": "n14746"
+          },
+          {
+            "id": "e14776",
+            "from": "n14737",
+            "to": "n14746"
+          },
+          {
+            "id": "e14777",
+            "from": "n14746",
+            "to": "n14718"
+          },
+          {
+            "id": "e14778",
+            "from": "n14747",
+            "to": "n14720"
+          },
+          {
+            "id": "e14779",
+            "from": "n14738",
+            "to": "n14747"
+          },
+          {
+            "id": "e14780",
+            "from": "n14745",
+            "to": "n14747"
+          },
+          {
+            "id": "e14781",
+            "from": "n14740",
+            "to": "n14748"
+          },
+          {
+            "id": "e14782",
+            "from": "n14748",
+            "to": "n14722"
+          },
+          {
+            "id": "e14783",
+            "from": "n14742",
+            "to": "n14749"
+          },
+          {
+            "id": "e14784",
+            "from": "n14749",
+            "to": "n14725"
+          },
+          {
+            "id": "e14785",
+            "from": "n14745",
+            "to": "n14748"
+          },
+          {
+            "id": "e14786",
+            "from": "n14745",
+            "to": "n14749"
+          },
+          {
+            "id": "e14787",
+            "from": "n14743",
+            "to": "n14750"
+          },
+          {
+            "id": "e14788",
+            "from": "n14750",
+            "to": "n14727"
+          },
+          {
+            "id": "e14789",
+            "from": "n14745",
+            "to": "n14750"
+          },
+          {
+            "id": "e14790",
+            "from": "n14745",
+            "to": "n14751"
+          },
+          {
+            "id": "e14791",
+            "from": "n14751",
+            "to": "n14730"
+          },
+          {
+            "id": "e14792",
+            "from": "n14744",
+            "to": "n14751"
+          },
+          {
+            "id": "e17050",
+            "from": "n17049",
+            "to": "n14743",
+            "auto": true
+          }
+        ]
+      },
+      "attachments": {
+        "excel": {
+          "family": "70ce862a-538a-4040-b6d3-98493f32f959",
+          "name": "Income Statement",
+          "rows": [
+            {
+              "name": "negative one",
+              "section": "input",
+              "include": true,
+              "constant": true
+            },
+            {
+              "name": "revenue",
+              "section": "calc",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "cogs",
+              "section": "calc",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "sga",
+              "section": "calc",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "gross profit",
+              "section": "calc",
+              "include": true,
+              "constant": false,
+              "style": {
+                "fill": null,
+                "font": {
+                  "color": "#475569",
+                  "weight": "normal"
+                },
+                "border": {
+                  "color": "#94a3b8",
+                  "style": "solid",
+                  "sides": [
+                    "top"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "other income",
+              "section": "input",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "other expense",
+              "section": "calc",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "add back da",
+              "section": "input",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "ebitda",
+              "section": "calc",
+              "include": true,
+              "constant": false,
+              "style": {
+                "fill": null,
+                "font": {
+                  "color": "#475569",
+                  "weight": "normal"
+                },
+                "border": {
+                  "color": "#94a3b8",
+                  "style": "solid",
+                  "sides": [
+                    "top"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "da",
+              "section": "calc",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "ebit",
+              "section": "calc",
+              "include": true,
+              "constant": false,
+              "style": {
+                "fill": null,
+                "font": {
+                  "color": "#475569",
+                  "weight": "normal"
+                },
+                "border": {
+                  "color": "#94a3b8",
+                  "style": "solid",
+                  "sides": [
+                    "top"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "interest income / expense",
+              "section": "calc",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "ebt",
+              "section": "calc",
+              "include": true,
+              "constant": false,
+              "style": {
+                "fill": null,
+                "font": {
+                  "color": "#475569",
+                  "weight": "normal"
+                },
+                "border": {
+                  "color": "#94a3b8",
+                  "style": "solid",
+                  "sides": [
+                    "top"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "income tax",
+              "section": "calc",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "net income",
+              "section": "output",
+              "include": true,
+              "constant": false,
+              "style": {
+                "fill": null,
+                "font": {
+                  "color": "#475569",
+                  "weight": "normal"
+                },
+                "border": {
+                  "color": "#94a3b8",
+                  "style": "solid",
+                  "sides": [
+                    "top"
+                  ]
+                }
+              }
+            }
+          ],
+          "customs": [],
+          "sectioned": [
+            "r0",
+            "r5",
+            "r7",
+            "r2",
+            "r1",
+            "r3",
+            "r6",
+            "r4",
+            "r9",
+            "r8",
+            "r11",
+            "r10",
+            "r13",
+            "r12",
+            "r14"
+          ],
+          "flat": [
+            "r1",
+            "r2",
+            "r4",
+            "r3",
+            "r5",
+            "r6",
+            "r7",
+            "r8",
+            "r9",
+            "r10",
+            "r11",
+            "r12",
+            "r13",
+            "r14",
+            "r0"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Balance Sheet",
+      "description": "Balance Sheet",
+      "group": "Financial Statement",
+      "kind": "module",
+      "family": "5592ec75-0ce9-48d7-88a1-377eb2b59d9a",
+      "version": 4,
+      "note": "",
+      "versionId": "4c32b15b-0cf4-4cf3-bb78-92750e696352",
+      "data": {
+        "version": 7,
+        "kind": "module",
+        "name": "Balance Sheet",
+        "selfCanvasId": "c11",
+        "nextId": 1748,
+        "nodes": [
+          {
+            "id": "n271",
+            "type": "value",
+            "x": 665.5,
+            "y": 625.8333333333333,
+            "w": 170,
+            "h": 64,
+            "text": "Total Asset",
+            "plugs": [
+              "Total Asset"
+            ]
+          },
+          {
+            "id": "n272",
+            "type": "value",
+            "x": 1448,
+            "y": 621.8333333333333,
+            "w": 170,
+            "h": 64,
+            "text": "Total Liabilities",
+            "plugs": [
+              "Total Liability"
+            ]
+          },
+          {
+            "id": "n273",
+            "type": "value",
+            "x": 1448,
+            "y": 851.2861042861042,
+            "w": 170,
+            "h": 64,
+            "text": "Total Equity",
+            "plugs": [
+              "Total Equity"
+            ]
+          },
+          {
+            "id": "n274",
+            "type": "value",
+            "x": 426.5,
+            "y": 127,
+            "w": 170,
+            "h": 64,
+            "text": "Cash",
+            "plugs": [
+              "to Total Asset",
+              "Cash per BS"
+            ]
+          },
+          {
+            "id": "n275",
+            "type": "value",
+            "x": 426.5,
+            "y": 210.13888888888886,
+            "w": 170,
+            "h": 64,
+            "text": "Accounts Receivable",
+            "plugs": [
+              "to Total Asset"
+            ]
+          },
+          {
+            "id": "n276",
+            "type": "value",
+            "x": 426.5,
+            "y": 293.2777777777777,
+            "w": 170,
+            "h": 64,
+            "text": "Inventory",
+            "plugs": [
+              "to Total Asset"
+            ]
+          },
+          {
+            "id": "n277",
+            "type": "value",
+            "x": 426.5,
+            "y": 459.55555555555543,
+            "w": 170,
+            "h": 64,
+            "text": "Other assets",
+            "plugs": [
+              "to Total Asset"
+            ]
+          },
+          {
+            "id": "n278",
+            "type": "value",
+            "x": 426.5,
+            "y": 542.6944444444443,
+            "w": 170,
+            "h": 64,
+            "text": "Gross PPE",
+            "plugs": [
+              "to Total Asset"
+            ]
+          },
+          {
+            "id": "n279",
+            "type": "value",
+            "x": 426.5,
+            "y": 625.8333333333333,
+            "w": 170,
+            "h": 64,
+            "text": "A/D",
+            "plugs": [
+              "to Total Asset"
+            ]
+          },
+          {
+            "id": "n280",
+            "type": "operator",
+            "x": 722.5,
+            "y": 388.91666666666663,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "to Total Asset"
+          },
+          {
+            "id": "n281",
+            "type": "operator",
+            "x": 1505,
+            "y": 380.4166666666666,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "to Total Liability"
+          },
+          {
+            "id": "n282",
+            "type": "value",
+            "x": 1179.5,
+            "y": 459.55555555555543,
+            "w": 170,
+            "h": 64,
+            "text": "Other liabilities",
+            "plugs": [
+              "to Total Liability"
+            ]
+          },
+          {
+            "id": "n283",
+            "type": "value",
+            "x": 1179.5,
+            "y": 127,
+            "w": 170,
+            "h": 64,
+            "text": "Accounts Payable",
+            "plugs": [
+              "to Total Liability"
+            ]
+          },
+          {
+            "id": "n284",
+            "type": "operator",
+            "x": 1505,
+            "y": 761.8972153972153,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "to Total Equity"
+          },
+          {
+            "id": "n285",
+            "type": "value",
+            "x": 1179.5,
+            "y": 847.2861042861042,
+            "w": 170,
+            "h": 64,
+            "text": "Retained Earnings",
+            "plugs": [
+              "to Total Equity"
+            ]
+          },
+          {
+            "id": "n286",
+            "type": "value",
+            "x": 1179.5,
+            "y": 757.8972153972153,
+            "w": 170,
+            "h": 64,
+            "text": "Paid In Capital",
+            "plugs": [
+              "to Total Equity"
+            ]
+          },
+          {
+            "id": "n287",
+            "type": "operator",
+            "x": 283.5,
+            "y": 214.13888888888886,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "to Total AR"
+          },
+          {
+            "id": "n288",
+            "type": "operator",
+            "x": 283.5,
+            "y": 297.2777777777777,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "to Total Inventory"
+          },
+          {
+            "id": "n289",
+            "type": "operator",
+            "x": 283.5,
+            "y": 463.55555555555543,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "to Total Other assets"
+          },
+          {
+            "id": "n290",
+            "type": "operator",
+            "x": 283.5,
+            "y": 546.6944444444443,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "to Total Gross PPE"
+          },
+          {
+            "id": "n291",
+            "type": "operator",
+            "x": 283.5,
+            "y": 629.8333333333333,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "to Total AD"
+          },
+          {
+            "id": "n292",
+            "type": "operator",
+            "x": 283.5,
+            "y": 131,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "to Cash EB"
+          },
+          {
+            "id": "n293",
+            "type": "operator",
+            "x": 1049.5,
+            "y": 131,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "to Total AP"
+          },
+          {
+            "id": "n294",
+            "type": "operator",
+            "x": 1049.5,
+            "y": 463.55555555555543,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "to Total Other liabilities"
+          },
+          {
+            "id": "n295",
+            "type": "operator",
+            "x": 1049.5,
+            "y": 761.8972153972153,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "to Total Paid in Capital"
+          },
+          {
+            "id": "n296",
+            "type": "operator",
+            "x": 1049.5,
+            "y": 851.2861042861042,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "to Retained Eranings EB"
+          },
+          {
+            "id": "n297",
+            "type": "value",
+            "x": 1179.5,
+            "y": 542.6944444444443,
+            "w": 170,
+            "h": 64,
+            "text": "Loan",
+            "plugs": [
+              "to Total Liability"
+            ]
+          },
+          {
+            "id": "n298",
+            "type": "operator",
+            "x": 1049.5,
+            "y": 546.6944444444443,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "to Total Loan"
+          },
+          {
+            "id": "n299",
+            "type": "value",
+            "x": 426.5,
+            "y": 376.4166666666666,
+            "w": 170,
+            "h": 64,
+            "text": "Deferred Tax Asset",
+            "plugs": [
+              "to Total Asset"
+            ]
+          },
+          {
+            "id": "n300",
+            "type": "operator",
+            "x": 283.5,
+            "y": 380.4166666666666,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "to Total DTA"
+          },
+          {
+            "id": "n301",
+            "type": "value",
+            "x": 1179.5,
+            "y": 210.13888888888886,
+            "w": 170,
+            "h": 64,
+            "text": "Interest Payable",
+            "plugs": [
+              "to Total Liability"
+            ]
+          },
+          {
+            "id": "n302",
+            "type": "operator",
+            "x": 1049.5,
+            "y": 214.13888888888886,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "to Total Intrerest Payable"
+          },
+          {
+            "id": "n303",
+            "type": "value",
+            "x": 1179.5,
+            "y": 293.2777777777777,
+            "w": 170,
+            "h": 64,
+            "text": "Dividend Payable",
+            "plugs": [
+              "to Total Liability"
+            ]
+          },
+          {
+            "id": "n304",
+            "type": "operator",
+            "x": 1049.5,
+            "y": 297.2777777777777,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "to Total Dividend Payable"
+          },
+          {
+            "id": "n305",
+            "type": "value",
+            "x": 1179.5,
+            "y": 376.4166666666666,
+            "w": 170,
+            "h": 64,
+            "text": "Income Tax Payable",
+            "plugs": [
+              "to Total Liability"
+            ]
+          },
+          {
+            "id": "n306",
+            "type": "operator",
+            "x": 1049.5,
+            "y": 380.4166666666666,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "to Total Income Tax Payable"
+          },
+          {
+            "id": "n307",
+            "type": "value",
+            "x": 1448,
+            "y": 960.2861042861042,
+            "w": 170,
+            "h": 64,
+            "text": "Total L+E",
+            "plugs": [
+              "Total L+E"
+            ]
+          },
+          {
+            "id": "n308",
+            "type": "alias",
+            "x": 1303.5,
+            "y": 1042.563882063882,
+            "w": 170,
+            "h": 64,
+            "sourceCanvasId": "c11",
+            "sourceNodeId": "n272",
+            "plugs": []
+          },
+          {
+            "id": "n309",
+            "type": "alias",
+            "x": 1603.5,
+            "y": 1038.563882063882,
+            "w": 170,
+            "h": 64,
+            "sourceCanvasId": "c11",
+            "sourceNodeId": "n273",
+            "plugs": []
+          },
+          {
+            "id": "n310",
+            "type": "operator",
+            "x": 1505,
+            "y": 1046.563882063882,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": ""
+          },
+          {
+            "id": "n1524",
+            "type": "value",
+            "x": 1179.5,
+            "y": 621.8333333333333,
+            "w": 170,
+            "h": 64,
+            "text": "Revolver",
+            "plugs": [
+              "to Total Liability"
+            ]
+          },
+          {
+            "id": "n1525",
+            "type": "operator",
+            "x": 1049.5,
+            "y": 625.8333333333333,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "to Revolver"
+          },
+          {
+            "id": "n1696",
+            "type": "alias",
+            "auto": true,
+            "x": 84,
+            "y": 214,
+            "w": 170,
+            "h": 64,
+            "sourceCanvasId": "c20",
+            "sourceNodeId": "n1064",
+            "plugs": []
+          },
+          {
+            "id": "n1698",
+            "type": "alias",
+            "auto": true,
+            "x": 84,
+            "y": 297,
+            "w": 170,
+            "h": 64,
+            "sourceCanvasId": "c22",
+            "sourceNodeId": "n1241",
+            "plugs": []
+          },
+          {
+            "id": "n1700",
+            "type": "alias",
+            "auto": true,
+            "x": 84,
+            "y": 131,
+            "w": 170,
+            "h": 64,
+            "sourceCanvasId": "c12",
+            "sourceNodeId": "n358",
+            "plugs": []
+          },
+          {
+            "id": "n1702",
+            "type": "alias",
+            "auto": true,
+            "x": 850,
+            "y": 131,
+            "w": 170,
+            "h": 64,
+            "sourceCanvasId": "c23",
+            "sourceNodeId": "n1349",
+            "plugs": []
+          },
+          {
+            "id": "n1704",
+            "type": "alias",
+            "auto": true,
+            "x": 850,
+            "y": 851,
+            "w": 170,
+            "h": 64,
+            "sourceCanvasId": "c13",
+            "sourceNodeId": "n469",
+            "plugs": []
+          },
+          {
+            "id": "n1706",
+            "type": "alias",
+            "auto": true,
+            "x": 850,
+            "y": 626,
+            "w": 170,
+            "h": 64,
+            "sourceCanvasId": "c15",
+            "sourceNodeId": "n602",
+            "plugs": []
+          }
+        ],
+        "edges": [
+          {
+            "id": "e316",
+            "from": "n280",
+            "to": "n271"
+          },
+          {
+            "id": "e317",
+            "from": "n281",
+            "to": "n272"
+          },
+          {
+            "id": "e318",
+            "from": "n284",
+            "to": "n273"
+          },
+          {
+            "id": "e319",
+            "from": "n287",
+            "to": "n275"
+          },
+          {
+            "id": "e320",
+            "from": "n288",
+            "to": "n276"
+          },
+          {
+            "id": "e321",
+            "from": "n289",
+            "to": "n277"
+          },
+          {
+            "id": "e322",
+            "from": "n290",
+            "to": "n278"
+          },
+          {
+            "id": "e323",
+            "from": "n292",
+            "to": "n274"
+          },
+          {
+            "id": "e324",
+            "from": "n293",
+            "to": "n283"
+          },
+          {
+            "id": "e325",
+            "from": "n294",
+            "to": "n282"
+          },
+          {
+            "id": "e326",
+            "from": "n295",
+            "to": "n286"
+          },
+          {
+            "id": "e327",
+            "from": "n296",
+            "to": "n285"
+          },
+          {
+            "id": "e328",
+            "from": "n298",
+            "to": "n297"
+          },
+          {
+            "id": "e329",
+            "from": "n291",
+            "to": "n279"
+          },
+          {
+            "id": "e330",
+            "from": "n300",
+            "to": "n299"
+          },
+          {
+            "id": "e331",
+            "from": "n302",
+            "to": "n301"
+          },
+          {
+            "id": "e332",
+            "from": "n304",
+            "to": "n303"
+          },
+          {
+            "id": "e333",
+            "from": "n306",
+            "to": "n305"
+          },
+          {
+            "id": "e334",
+            "from": "n308",
+            "to": "n310"
+          },
+          {
+            "id": "e335",
+            "from": "n309",
+            "to": "n310"
+          },
+          {
+            "id": "e336",
+            "from": "n310",
+            "to": "n307"
+          },
+          {
+            "id": "e1527",
+            "from": "n1525",
+            "to": "n1524"
+          },
+          {
+            "id": "e1680",
+            "from": "n274",
+            "to": "n280",
+            "auto": true
+          },
+          {
+            "id": "e1681",
+            "from": "n275",
+            "to": "n280",
+            "auto": true
+          },
+          {
+            "id": "e1682",
+            "from": "n276",
+            "to": "n280",
+            "auto": true
+          },
+          {
+            "id": "e1683",
+            "from": "n277",
+            "to": "n280",
+            "auto": true
+          },
+          {
+            "id": "e1684",
+            "from": "n278",
+            "to": "n280",
+            "auto": true
+          },
+          {
+            "id": "e1685",
+            "from": "n279",
+            "to": "n280",
+            "auto": true
+          },
+          {
+            "id": "e1686",
+            "from": "n299",
+            "to": "n280",
+            "auto": true
+          },
+          {
+            "id": "e1687",
+            "from": "n282",
+            "to": "n281",
+            "auto": true
+          },
+          {
+            "id": "e1688",
+            "from": "n283",
+            "to": "n281",
+            "auto": true
+          },
+          {
+            "id": "e1689",
+            "from": "n297",
+            "to": "n281",
+            "auto": true
+          },
+          {
+            "id": "e1690",
+            "from": "n301",
+            "to": "n281",
+            "auto": true
+          },
+          {
+            "id": "e1691",
+            "from": "n303",
+            "to": "n281",
+            "auto": true
+          },
+          {
+            "id": "e1692",
+            "from": "n305",
+            "to": "n281",
+            "auto": true
+          },
+          {
+            "id": "e1693",
+            "from": "n1524",
+            "to": "n281",
+            "auto": true
+          },
+          {
+            "id": "e1694",
+            "from": "n285",
+            "to": "n284",
+            "auto": true
+          },
+          {
+            "id": "e1695",
+            "from": "n286",
+            "to": "n284",
+            "auto": true
+          },
+          {
+            "id": "e1697",
+            "from": "n1696",
+            "to": "n287",
+            "auto": true
+          },
+          {
+            "id": "e1699",
+            "from": "n1698",
+            "to": "n288",
+            "auto": true
+          },
+          {
+            "id": "e1701",
+            "from": "n1700",
+            "to": "n292",
+            "auto": true
+          },
+          {
+            "id": "e1703",
+            "from": "n1702",
+            "to": "n293",
+            "auto": true
+          },
+          {
+            "id": "e1705",
+            "from": "n1704",
+            "to": "n296",
+            "auto": true
+          },
+          {
+            "id": "e1707",
+            "from": "n1706",
+            "to": "n1525",
+            "auto": true
+          }
+        ]
+      },
+      "attachments": {
+        "excel": {
+          "family": "5592ec75-0ce9-48d7-88a1-377eb2b59d9a",
+          "name": "Balance Sheet",
+          "rows": [
+            {
+              "name": "cash",
+              "section": "calc",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "accounts payable",
+              "section": "calc",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "accounts receivable",
+              "section": "calc",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "interest payable",
+              "section": "input",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "inventory",
+              "section": "input",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "dividend payable",
+              "section": "input",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "deferred tax asset",
+              "section": "input",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "income tax payable",
+              "section": "input",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "other assets",
+              "section": "input",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "other liabilities",
+              "section": "input",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "gross ppe",
+              "section": "input",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "loan",
+              "section": "calc",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "total liabilities",
+              "section": "output",
+              "include": true,
+              "constant": false,
+              "style": {
+                "fill": null,
+                "font": {
+                  "color": "#475569",
+                  "weight": "normal"
+                },
+                "border": {
+                  "color": "#94a3b8",
+                  "style": "solid",
+                  "sides": [
+                    "top"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "a/d",
+              "section": "input",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "total asset",
+              "section": "output",
+              "include": true,
+              "constant": false,
+              "style": {
+                "fill": null,
+                "font": {
+                  "color": "#475569",
+                  "weight": "normal"
+                },
+                "border": {
+                  "color": "#94a3b8",
+                  "style": "solid",
+                  "sides": [
+                    "top"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "paid in capital",
+              "section": "input",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "retaiined eranings",
+              "section": "calc",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "total equity",
+              "section": "output",
+              "include": true,
+              "constant": false,
+              "style": {
+                "fill": null,
+                "font": {
+                  "color": "#475569",
+                  "weight": "normal"
+                },
+                "border": {
+                  "color": "#94a3b8",
+                  "style": "solid",
+                  "sides": [
+                    "top"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "total l+e",
+              "section": "output",
+              "include": true,
+              "constant": false
+            }
+          ],
+          "customs": [
+            {
+              "label": "",
+              "section": "calc",
+              "showPeriodLabels": false
+            },
+            {
+              "label": "",
+              "section": "output",
+              "showPeriodLabels": false
+            },
+            {
+              "label": "",
+              "section": "output",
+              "showPeriodLabels": false
+            }
+          ],
+          "sectioned": [
+            "r4",
+            "r6",
+            "r8",
+            "r10",
+            "r13",
+            "r3",
+            "r5",
+            "r7",
+            "r9",
+            "r15",
+            "r0",
+            "r2",
+            "r1",
+            "r11",
+            "r16",
+            "c0",
+            "r14",
+            "r12",
+            "r17",
+            "r18",
+            "c1",
+            "c2"
+          ],
+          "flat": [
+            "r0",
+            "r2",
+            "r4",
+            "r6",
+            "r8",
+            "r10",
+            "r13",
+            "r14",
+            "c0",
+            "r1",
+            "r3",
+            "r5",
+            "r7",
+            "r9",
+            "r11",
+            "r12",
+            "c1",
+            "r15",
+            "r16",
+            "r17",
+            "c2",
+            "r18"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Cash flow statement",
+      "description": "complete cash flow statement",
+      "group": "Financial Statement",
+      "kind": "module",
+      "family": "669f5bdb-c88b-41b2-b74c-8298ce5c3929",
+      "version": 7,
+      "note": "",
+      "versionId": "43cdbc5b-9b66-4fea-a7f5-8b6c09d3d155",
+      "data": {
+        "version": 7,
+        "kind": "module",
+        "name": "Cash flow statement",
+        "selfCanvasId": "c427",
+        "nextId": 25644,
+        "nodes": [
+          {
+            "id": "n22809",
+            "type": "value",
+            "x": 727.5,
+            "y": 329.6538461538462,
+            "w": 170,
+            "h": 64,
+            "text": "CFO",
+            "blockRole": null,
+            "plugs": [
+              "to CFO"
+            ]
+          },
+          {
+            "id": "n22810",
+            "type": "operator",
+            "x": 929.3333333333335,
+            "y": 477.7307692307693,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": ""
+          },
+          {
+            "id": "n22811",
+            "type": "value",
+            "x": 727.5,
+            "y": 473.7307692307693,
+            "w": 170,
+            "h": 64,
+            "text": "CFI",
+            "blockRole": null,
+            "plugs": [
+              "to CFI"
+            ]
+          },
+          {
+            "id": "n22812",
+            "type": "value",
+            "x": 727.5,
+            "y": 1050.038461538461,
+            "w": 170,
+            "h": 64,
+            "text": "CFF",
+            "blockRole": null,
+            "plugs": []
+          },
+          {
+            "id": "n22813",
+            "type": "value",
+            "x": 1017.1666666666667,
+            "y": 477.7307692307693,
+            "w": 170,
+            "h": 64,
+            "text": "Total Cash Flow",
+            "plugs": []
+          },
+          {
+            "id": "n22814",
+            "type": "value",
+            "x": 1156.5,
+            "y": 49,
+            "w": 170,
+            "h": 64,
+            "text": "Cash BB",
+            "blockRole": null,
+            "plugs": []
+          },
+          {
+            "id": "n22815",
+            "type": "value",
+            "x": 1156.5,
+            "y": 1050.038461538461,
+            "w": 170,
+            "h": 64,
+            "text": "Cash EB",
+            "blockRole": null,
+            "plugs": [
+              "to Cash EB"
+            ]
+          },
+          {
+            "id": "n22816",
+            "type": "operator",
+            "x": 1213.5,
+            "y": 481.7307692307693,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": ""
+          },
+          {
+            "id": "n22817",
+            "type": "value",
+            "x": 505.5,
+            "y": 41.5,
+            "w": 170,
+            "h": 64,
+            "text": "EBIT",
+            "plugs": []
+          },
+          {
+            "id": "n22818",
+            "type": "value",
+            "x": 505.5,
+            "y": 257.61538461538464,
+            "w": 170,
+            "h": 64,
+            "text": "add back Depreciation",
+            "plugs": []
+          },
+          {
+            "id": "n22819",
+            "type": "value",
+            "x": 505.5,
+            "y": 113.53846153846155,
+            "w": 170,
+            "h": 64,
+            "text": "Tax payament",
+            "plugs": []
+          },
+          {
+            "id": "n22820",
+            "type": "value",
+            "x": 505.5,
+            "y": 185.5769230769231,
+            "w": 170,
+            "h": 64,
+            "text": "delta NWC",
+            "plugs": []
+          },
+          {
+            "id": "n22821",
+            "type": "value",
+            "x": 505.5,
+            "y": 329.6538461538462,
+            "w": 170,
+            "h": 64,
+            "text": "add back Amortization",
+            "plugs": []
+          },
+          {
+            "id": "n22822",
+            "type": "operator",
+            "x": 784.5,
+            "y": 189.5769230769231,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": ""
+          },
+          {
+            "id": "n22823",
+            "type": "value",
+            "x": 505.5,
+            "y": 401.69230769230774,
+            "w": 170,
+            "h": 64,
+            "text": "CAPEX",
+            "plugs": []
+          },
+          {
+            "id": "n22824",
+            "type": "value",
+            "x": 505.5,
+            "y": 473.7307692307693,
+            "w": 170,
+            "h": 64,
+            "text": "Proceeds from asset sale",
+            "plugs": []
+          },
+          {
+            "id": "n22825",
+            "type": "operator",
+            "x": 784.5,
+            "y": 409.69230769230774,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": ""
+          },
+          {
+            "id": "n22826",
+            "type": "value",
+            "x": 505.5,
+            "y": 545.7692307692308,
+            "w": 170,
+            "h": 64,
+            "text": "Proceeds PIC",
+            "blockRole": null,
+            "plugs": []
+          },
+          {
+            "id": "n22827",
+            "type": "value",
+            "x": 505.5,
+            "y": 617.8076923076924,
+            "w": 170,
+            "h": 64,
+            "text": "Dividend payout",
+            "blockRole": null,
+            "plugs": []
+          },
+          {
+            "id": "n22828",
+            "type": "value",
+            "x": 505.5,
+            "y": 689.8461538461539,
+            "w": 170,
+            "h": 64,
+            "text": "Stock repurchase",
+            "blockRole": null,
+            "plugs": []
+          },
+          {
+            "id": "n22829",
+            "type": "value",
+            "x": 505.5,
+            "y": 761.8846153846152,
+            "w": 170,
+            "h": 64,
+            "text": "DD Loan",
+            "blockRole": null,
+            "plugs": []
+          },
+          {
+            "id": "n22830",
+            "type": "value",
+            "x": 505.5,
+            "y": 833.9230769230767,
+            "w": 170,
+            "h": 64,
+            "text": "Interest payment",
+            "blockRole": null,
+            "plugs": []
+          },
+          {
+            "id": "n22831",
+            "type": "value",
+            "x": 505.5,
+            "y": 905.9615384615381,
+            "w": 170,
+            "h": 64,
+            "text": "Repayment Loan",
+            "blockRole": null,
+            "plugs": []
+          },
+          {
+            "id": "n22832",
+            "type": "operator",
+            "x": 784.5,
+            "y": 909.9615384615386,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": ""
+          },
+          {
+            "id": "n22833",
+            "type": "periodShift",
+            "x": 1350.5,
+            "y": 481.7307692307693,
+            "w": 56,
+            "h": 56,
+            "shift": -1
+          },
+          {
+            "id": "n22834",
+            "type": "operator",
+            "x": 360,
+            "y": 45.5,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "to EBIT"
+          },
+          {
+            "id": "n22835",
+            "type": "operator",
+            "x": 360,
+            "y": 117.53846153846155,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "to CF tax payment"
+          },
+          {
+            "id": "n22836",
+            "type": "operator",
+            "x": 360,
+            "y": 189.5769230769231,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "to delta NWC"
+          },
+          {
+            "id": "n22837",
+            "type": "operator",
+            "x": 360,
+            "y": 261.61538461538464,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "to Depreciation"
+          },
+          {
+            "id": "n22838",
+            "type": "operator",
+            "x": 360,
+            "y": 333.6538461538462,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "to Amortization"
+          },
+          {
+            "id": "n22839",
+            "type": "operator",
+            "x": 360,
+            "y": 405.69230769230774,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "to total CAPEX"
+          },
+          {
+            "id": "n22840",
+            "type": "operator",
+            "x": 360,
+            "y": 477.7307692307693,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "to CF proceeds asset sales"
+          },
+          {
+            "id": "n22841",
+            "type": "operator",
+            "x": 360,
+            "y": 549.7692307692308,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "to CF PIC proceeds"
+          },
+          {
+            "id": "n22842",
+            "type": "operator",
+            "x": 360,
+            "y": 621.8076923076924,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "to dividend payout"
+          },
+          {
+            "id": "n22843",
+            "type": "operator",
+            "x": 360,
+            "y": 693.8461538461539,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "to stock repurchase"
+          },
+          {
+            "id": "n22844",
+            "type": "operator",
+            "x": 360,
+            "y": 765.8846153846155,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "to CF debt DD"
+          },
+          {
+            "id": "n22845",
+            "type": "operator",
+            "x": 360,
+            "y": 837.923076923077,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "to CF interest payment"
+          },
+          {
+            "id": "n22846",
+            "type": "operator",
+            "x": 360,
+            "y": 909.9615384615386,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "to cf debt repayment"
+          },
+          {
+            "id": "n25242",
+            "type": "value",
+            "x": 505.5,
+            "y": 977.9999999999995,
+            "w": 170,
+            "h": 64,
+            "text": "DD Revolver",
+            "blockRole": null,
+            "plugs": []
+          },
+          {
+            "id": "n25243",
+            "type": "value",
+            "x": 505.5,
+            "y": 1050.038461538461,
+            "w": 170,
+            "h": 64,
+            "text": "Repayment Revolver",
+            "blockRole": null,
+            "plugs": []
+          },
+          {
+            "id": "n25373",
+            "type": "operator",
+            "x": 360,
+            "y": 982,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "DD Revolver"
+          },
+          {
+            "id": "n25374",
+            "type": "operator",
+            "x": 360,
+            "y": 1054.038461538461,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "Repayment Revolver"
+          },
+          {
+            "id": "n25603",
+            "type": "alias",
+            "auto": true,
+            "x": 160,
+            "y": 46,
+            "w": 170,
+            "h": 64,
+            "sourceCanvasId": "c425",
+            "sourceNodeId": "n22662",
+            "plugs": []
+          },
+          {
+            "id": "n25605",
+            "type": "alias",
+            "auto": true,
+            "x": 160,
+            "y": 190,
+            "w": 170,
+            "h": 64,
+            "sourceCanvasId": "c436",
+            "sourceNodeId": "n23447",
+            "plugs": []
+          },
+          {
+            "id": "n25607",
+            "type": "alias",
+            "auto": true,
+            "x": 162,
+            "y": 284,
+            "w": 170,
+            "h": 64,
+            "sourceCanvasId": "c438",
+            "sourceNodeId": "n23725",
+            "plugs": []
+          },
+          {
+            "id": "n25609",
+            "type": "alias",
+            "auto": true,
+            "x": 160,
+            "y": 982,
+            "w": 170,
+            "h": 64,
+            "sourceCanvasId": "c430",
+            "sourceNodeId": "n23051",
+            "plugs": []
+          },
+          {
+            "id": "n25611",
+            "type": "alias",
+            "auto": true,
+            "x": 160,
+            "y": 1074,
+            "w": 170,
+            "h": 64,
+            "sourceCanvasId": "c430",
+            "sourceNodeId": "n23052",
+            "plugs": []
+          }
+        ],
+        "edges": [
+          {
+            "id": "e22847",
+            "from": "n22813",
+            "to": "n22816"
+          },
+          {
+            "id": "e22848",
+            "from": "n22816",
+            "to": "n22815"
+          },
+          {
+            "id": "e22849",
+            "from": "n22814",
+            "to": "n22816"
+          },
+          {
+            "id": "e22850",
+            "from": "n22809",
+            "to": "n22810"
+          },
+          {
+            "id": "e22851",
+            "from": "n22811",
+            "to": "n22810"
+          },
+          {
+            "id": "e22852",
+            "from": "n22812",
+            "to": "n22810"
+          },
+          {
+            "id": "e22853",
+            "from": "n22810",
+            "to": "n22813"
+          },
+          {
+            "id": "e22854",
+            "from": "n22821",
+            "to": "n22822"
+          },
+          {
+            "id": "e22855",
+            "from": "n22818",
+            "to": "n22822"
+          },
+          {
+            "id": "e22856",
+            "from": "n22820",
+            "to": "n22822"
+          },
+          {
+            "id": "e22857",
+            "from": "n22819",
+            "to": "n22822"
+          },
+          {
+            "id": "e22858",
+            "from": "n22817",
+            "to": "n22822"
+          },
+          {
+            "id": "e22859",
+            "from": "n22822",
+            "to": "n22809"
+          },
+          {
+            "id": "e22860",
+            "from": "n22823",
+            "to": "n22825"
+          },
+          {
+            "id": "e22861",
+            "from": "n22824",
+            "to": "n22825"
+          },
+          {
+            "id": "e22862",
+            "from": "n22825",
+            "to": "n22811"
+          },
+          {
+            "id": "e22863",
+            "from": "n22826",
+            "to": "n22832"
+          },
+          {
+            "id": "e22864",
+            "from": "n22827",
+            "to": "n22832"
+          },
+          {
+            "id": "e22865",
+            "from": "n22828",
+            "to": "n22832"
+          },
+          {
+            "id": "e22866",
+            "from": "n22832",
+            "to": "n22812"
+          },
+          {
+            "id": "e22867",
+            "from": "n22829",
+            "to": "n22832"
+          },
+          {
+            "id": "e22868",
+            "from": "n22830",
+            "to": "n22832"
+          },
+          {
+            "id": "e22869",
+            "from": "n22831",
+            "to": "n22832"
+          },
+          {
+            "id": "e22870",
+            "from": "n22815",
+            "to": "n22833"
+          },
+          {
+            "id": "e22871",
+            "from": "n22833",
+            "to": "n22814"
+          },
+          {
+            "id": "e22872",
+            "from": "n22834",
+            "to": "n22817"
+          },
+          {
+            "id": "e22873",
+            "from": "n22846",
+            "to": "n22831"
+          },
+          {
+            "id": "e22874",
+            "from": "n22845",
+            "to": "n22830"
+          },
+          {
+            "id": "e22875",
+            "from": "n22844",
+            "to": "n22829"
+          },
+          {
+            "id": "e22876",
+            "from": "n22843",
+            "to": "n22828"
+          },
+          {
+            "id": "e22877",
+            "from": "n22842",
+            "to": "n22827"
+          },
+          {
+            "id": "e22878",
+            "from": "n22841",
+            "to": "n22826"
+          },
+          {
+            "id": "e22879",
+            "from": "n22840",
+            "to": "n22824"
+          },
+          {
+            "id": "e22880",
+            "from": "n22839",
+            "to": "n22823"
+          },
+          {
+            "id": "e22881",
+            "from": "n22838",
+            "to": "n22821"
+          },
+          {
+            "id": "e22882",
+            "from": "n22837",
+            "to": "n22818"
+          },
+          {
+            "id": "e22883",
+            "from": "n22836",
+            "to": "n22820"
+          },
+          {
+            "id": "e22884",
+            "from": "n22835",
+            "to": "n22819"
+          },
+          {
+            "id": "e25505",
+            "from": "n25374",
+            "to": "n25243"
+          },
+          {
+            "id": "e25506",
+            "from": "n25373",
+            "to": "n25242"
+          },
+          {
+            "id": "e25604",
+            "from": "n25603",
+            "to": "n22834",
+            "auto": true
+          },
+          {
+            "id": "e25606",
+            "from": "n25605",
+            "to": "n22836",
+            "auto": true
+          },
+          {
+            "id": "e25608",
+            "from": "n25607",
+            "to": "n22836",
+            "auto": true
+          },
+          {
+            "id": "e25610",
+            "from": "n25609",
+            "to": "n25373",
+            "auto": true
+          },
+          {
+            "id": "e25612",
+            "from": "n25611",
+            "to": "n25374",
+            "auto": true
+          },
+          {
+            "id": "e25641",
+            "from": "n25242",
+            "to": "n22832"
+          },
+          {
+            "id": "e25642",
+            "from": "n25243",
+            "to": "n22832"
+          }
+        ]
+      },
+      "attachments": {
+        "excel": {
+          "family": "669f5bdb-c88b-41b2-b74c-8298ce5c3929",
+          "name": "Cash flow statement",
+          "rows": [
+            {
+              "name": "ebit",
+              "section": "calc",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "cash bb",
+              "section": "calc",
+              "include": true,
+              "constant": false
+            },
+            {
+              "name": "tax payament",
+              "section": "input",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "delta nwc",
+              "section": "calc",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "add back depreciation",
+              "section": "input",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "add back amortization",
+              "section": "input",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "cfo",
+              "section": "calc",
+              "include": true,
+              "constant": false,
+              "style": {
+                "fill": null,
+                "font": {
+                  "color": "#475569",
+                  "weight": "normal"
+                },
+                "border": {
+                  "color": "#94a3b8",
+                  "style": "solid",
+                  "sides": [
+                    "top"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "capex",
+              "section": "input",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "proceeds from asset sale",
+              "section": "input",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "cfi",
+              "section": "calc",
+              "include": true,
+              "constant": false,
+              "style": {
+                "fill": null,
+                "font": {
+                  "color": "#475569",
+                  "weight": "normal"
+                },
+                "border": {
+                  "color": "#94a3b8",
+                  "style": "solid",
+                  "sides": [
+                    "top"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "total cash flow",
+              "section": "calc",
+              "include": true,
+              "constant": false,
+              "style": {
+                "fill": null,
+                "font": {
+                  "color": "#475569",
+                  "weight": "normal"
+                },
+                "border": {
+                  "color": "#94a3b8",
+                  "style": "solid",
+                  "sides": [
+                    "top"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "proceeds pic",
+              "section": "input",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "dividend payout",
+              "section": "input",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "stock repurchase",
+              "section": "input",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "debt issuance",
+              "section": "input",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "interest payment",
+              "section": "input",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "debt repayment",
+              "section": "input",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "cff",
+              "section": "calc",
+              "include": true,
+              "constant": false,
+              "style": {
+                "fill": null,
+                "font": {
+                  "color": "#475569",
+                  "weight": "normal"
+                },
+                "border": {
+                  "color": "#94a3b8",
+                  "style": "solid",
+                  "sides": [
+                    "top"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "cash eb",
+              "section": "calc",
+              "include": true,
+              "constant": false,
+              "style": {
+                "fill": null,
+                "font": {
+                  "color": "#475569",
+                  "weight": "normal"
+                },
+                "border": {
+                  "color": "#94a3b8",
+                  "style": "solid",
+                  "sides": [
+                    "top"
+                  ]
+                }
+              }
+            }
+          ],
+          "customs": [
+            {
+              "label": "",
+              "section": "input",
+              "showPeriodLabels": false
+            },
+            {
+              "label": "",
+              "section": "calc",
+              "showPeriodLabels": false
+            },
+            {
+              "label": "",
+              "section": "calc",
+              "showPeriodLabels": false
+            },
+            {
+              "label": "",
+              "section": "calc",
+              "showPeriodLabels": false
+            },
+            {
+              "label": "",
+              "section": "calc",
+              "showPeriodLabels": false
+            }
+          ],
+          "sectioned": [
+            "r2",
+            "r4",
+            "r5",
+            "r7",
+            "r8",
+            "r11",
+            "r12",
+            "r13",
+            "r14",
+            "r15",
+            "r16",
+            "c0",
+            "r0",
+            "r3",
+            "r6",
+            "r9",
+            "r17",
+            "r10",
+            "r1",
+            "r18",
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ],
+          "flat": [
+            "r1",
+            "c3",
+            "r0",
+            "r2",
+            "r3",
+            "r4",
+            "r5",
+            "r6",
+            "c0",
+            "r7",
+            "r8",
+            "r9",
+            "c1",
+            "r11",
+            "r12",
+            "r13",
+            "r14",
+            "r15",
+            "r16",
+            "r17",
+            "c2",
+            "r10",
+            "c4",
+            "r18"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Retained Earnings",
+      "description": "",
+      "group": "Model Engine",
+      "kind": "module",
+      "family": "0b56419b-a0d3-41b0-baeb-5ad2db2fc673",
+      "version": 1,
+      "note": "",
+      "versionId": "d2f5d15c-e4e0-452c-8a73-4c42993c0188",
+      "data": {
+        "version": 7,
+        "kind": "module",
+        "name": "Retained Earnings",
+        "selfCanvasId": "c220",
+        "nextId": 10274,
+        "nodes": [
+          {
+            "id": "n9803",
+            "type": "value",
+            "x": 330,
+            "y": 158,
+            "w": 170,
+            "h": 64,
+            "text": "Beginning Balance",
+            "plugs": []
+          },
+          {
+            "id": "n9804",
+            "type": "value",
+            "x": 330,
+            "y": 407,
+            "w": 170,
+            "h": 64,
+            "text": "Ending Balance",
+            "blockRole": null,
+            "plugs": []
+          },
+          {
+            "id": "n9805",
+            "type": "value",
+            "x": 534,
+            "y": 238.33333333333334,
+            "w": 170,
+            "h": 64,
+            "text": "+Net Income",
+            "blockRole": "input",
+            "plugs": []
+          },
+          {
+            "id": "n9806",
+            "type": "value",
+            "x": 534,
+            "y": 314.6666666666667,
+            "w": 170,
+            "h": 64,
+            "text": "-Dividend Payout",
+            "blockRole": "input",
+            "plugs": []
+          },
+          {
+            "id": "n9807",
+            "type": "operator",
+            "x": 387,
+            "y": 318.6666666666667,
+            "w": 56,
+            "h": 56,
+            "text": "−",
+            "socket": ""
+          },
+          {
+            "id": "n9808",
+            "type": "operator",
+            "x": 387,
+            "y": 242.33333333333334,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": ""
+          },
+          {
+            "id": "n9809",
+            "type": "periodShift",
+            "x": 285,
+            "y": 280.5,
+            "w": 56,
+            "h": 56,
+            "shift": -1
+          },
+          {
+            "id": "n9866",
+            "type": "operator",
+            "x": 759,
+            "y": 242.33333333333337,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "Net Income"
+          },
+          {
+            "id": "n10017",
+            "type": "operator",
+            "x": 759,
+            "y": 318.6666666666667,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "to dividend payout"
+          },
+          {
+            "id": "n10172",
+            "type": "value",
+            "x": 330,
+            "y": 515,
+            "w": 170,
+            "h": 64,
+            "text": "Retained Earnings",
+            "blockRole": null,
+            "plugs": [
+              "to Retained Eranings EB"
+            ]
+          },
+          {
+            "id": "n10272",
+            "type": "alias",
+            "auto": true,
+            "x": 559,
+            "y": 162,
+            "w": 170,
+            "h": 64,
+            "sourceCanvasId": "c210",
+            "sourceNodeId": "n8820",
+            "plugs": []
+          }
+        ],
+        "edges": [
+          {
+            "id": "e9810",
+            "from": "n9803",
+            "to": "n9808"
+          },
+          {
+            "id": "e9811",
+            "from": "n9805",
+            "to": "n9808"
+          },
+          {
+            "id": "e9812",
+            "from": "n9808",
+            "to": "n9807"
+          },
+          {
+            "id": "e9813",
+            "from": "n9806",
+            "to": "n9807"
+          },
+          {
+            "id": "e9815",
+            "from": "n9804",
+            "to": "n9809"
+          },
+          {
+            "id": "e9816",
+            "from": "n9809",
+            "to": "n9803"
+          },
+          {
+            "id": "e10016",
+            "from": "n9866",
+            "to": "n9805"
+          },
+          {
+            "id": "e10069",
+            "from": "n10017",
+            "to": "n9806"
+          },
+          {
+            "id": "e10170",
+            "from": "n9807",
+            "to": "n9804"
+          },
+          {
+            "id": "e10222",
+            "from": "n9804",
+            "to": "n10172"
+          },
+          {
+            "id": "e10273",
+            "from": "n10272",
+            "to": "n9866",
+            "auto": true
+          }
+        ]
+      },
+      "attachments": {
+        "excel": {
+          "family": "0b56419b-a0d3-41b0-baeb-5ad2db2fc673",
+          "name": "Retained Earnings",
+          "rows": [
+            {
+              "name": "beginning balance",
+              "section": "calc",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "+net income",
+              "section": "calc",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "-dividend payout",
+              "section": "input",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "ending balance",
+              "section": "calc",
+              "include": true,
+              "constant": false,
+              "style": {
+                "fill": null,
+                "font": {
+                  "color": "#475569",
+                  "weight": "normal"
+                },
+                "border": {
+                  "color": "#94a3b8",
+                  "style": "solid",
+                  "sides": [
+                    "top"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "retained earnings",
+              "section": "output",
+              "include": true,
+              "constant": false
+            }
+          ],
+          "customs": [
+            {
+              "label": "",
+              "section": "output",
+              "showPeriodLabels": false
+            }
+          ],
+          "sectioned": [
+            "r2",
+            "r0",
+            "r1",
+            "r3",
+            "r4",
+            "c0"
+          ],
+          "flat": [
+            "r0",
+            "r1",
+            "r2",
+            "r3",
+            "c0",
+            "r4"
+          ]
+        }
+      }
+    },
+    {
+      "name": "CFWF",
+      "description": "",
+      "group": "Model Engine",
+      "kind": "module",
+      "family": "b3a36d3b-87ed-4405-96f0-1086887917bb",
+      "version": 15,
+      "note": "",
+      "versionId": "949b1ede-1d9f-4d54-8f79-4820df737a59",
+      "data": {
+        "version": 7,
+        "kind": "module",
+        "name": "CFWF",
+        "selfCanvasId": "c429",
+        "nextId": 25911,
+        "nodes": [
+          {
+            "id": "n22948",
+            "type": "value",
+            "x": 331.5,
+            "y": 37.18253968253968,
+            "w": 170,
+            "h": 64,
+            "text": "BB Cash",
+            "plugs": []
+          },
+          {
+            "id": "n22949",
+            "type": "value",
+            "x": 331.5,
+            "y": 111.18253968253967,
+            "w": 170,
+            "h": 64,
+            "text": "CFO",
+            "plugs": []
+          },
+          {
+            "id": "n22950",
+            "type": "value",
+            "x": 331.5,
+            "y": 185.18253968253967,
+            "w": 170,
+            "h": 64,
+            "text": "CFI",
+            "plugs": []
+          },
+          {
+            "id": "n22951",
+            "type": "value",
+            "x": 534,
+            "y": 185.18253968253967,
+            "w": 170,
+            "h": 64,
+            "text": "Cash available for Debt Service",
+            "plugs": []
+          },
+          {
+            "id": "n22952",
+            "type": "operator",
+            "x": 591,
+            "y": 111.18253968253967,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": ""
+          },
+          {
+            "id": "n22953",
+            "type": "value",
+            "x": 534,
+            "y": 259.1825396825397,
+            "w": 170,
+            "h": 64,
+            "text": "Repayment Revolver",
+            "plugs": []
+          },
+          {
+            "id": "n22954",
+            "type": "value",
+            "x": 534,
+            "y": 333.1825396825397,
+            "w": 170,
+            "h": 64,
+            "text": "Interest Payment",
+            "plugs": []
+          },
+          {
+            "id": "n22955",
+            "type": "value",
+            "x": 534,
+            "y": 407.1825396825397,
+            "w": 170,
+            "h": 64,
+            "text": "Draw down Loan",
+            "plugs": []
+          },
+          {
+            "id": "n22956",
+            "type": "value",
+            "x": 534,
+            "y": 481.1825396825397,
+            "w": 170,
+            "h": 64,
+            "text": "Repayment Loan",
+            "plugs": []
+          },
+          {
+            "id": "n22957",
+            "type": "value",
+            "x": 736.5,
+            "y": 481.1825396825397,
+            "w": 170,
+            "h": 64,
+            "text": "Remaining cash after Debt Service",
+            "plugs": []
+          },
+          {
+            "id": "n22958",
+            "type": "operator",
+            "x": 793.5,
+            "y": 345.1825396825397,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": ""
+          },
+          {
+            "id": "n22959",
+            "type": "value",
+            "x": 736.5,
+            "y": 555.1825396825396,
+            "w": 170,
+            "h": 64,
+            "text": "Equity contribution",
+            "plugs": []
+          },
+          {
+            "id": "n22960",
+            "type": "operator",
+            "x": 996,
+            "y": 481.1825396825397,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": ""
+          },
+          {
+            "id": "n22961",
+            "type": "value",
+            "x": 939,
+            "y": 696.9814814814814,
+            "w": 170,
+            "h": 64,
+            "text": "Cash available for SH distribution\n0",
+            "plugs": []
+          },
+          {
+            "id": "n22962",
+            "type": "value",
+            "x": 1141.5,
+            "y": 770.9814814814814,
+            "w": 170,
+            "h": 64,
+            "text": "Remaining cash\n0",
+            "plugs": []
+          },
+          {
+            "id": "n22963",
+            "type": "value",
+            "x": 939,
+            "y": 770.9814814814814,
+            "w": 170,
+            "h": 64,
+            "text": "Dividend payout\n0",
+            "plugs": []
+          },
+          {
+            "id": "n22964",
+            "type": "operator",
+            "x": 1198.5,
+            "y": 700.9814814814814,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": ""
+          },
+          {
+            "id": "n22965",
+            "type": "value",
+            "x": 1141.5,
+            "y": 844.9814814814814,
+            "w": 170,
+            "h": 64,
+            "text": "Revolver DD",
+            "plugs": [
+              "DD Revolver CFWF"
+            ]
+          },
+          {
+            "id": "n22966",
+            "type": "value",
+            "x": 1344,
+            "y": 918.9814814814814,
+            "w": 170,
+            "h": 64,
+            "text": "EB Cash\n0",
+            "plugs": [
+              "Cash per CFWF"
+            ]
+          },
+          {
+            "id": "n22967",
+            "type": "operator",
+            "x": 1401,
+            "y": 848.9814814814814,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": ""
+          },
+          {
+            "id": "n22968",
+            "type": "function",
+            "x": 1358,
+            "y": 754.9814814814814,
+            "w": 190,
+            "h": 74,
+            "fn": {
+              "family": "1450d9b3-f118-4ec2-8586-8659d25181d9",
+              "version": 1,
+              "versionId": "bb7c8b91-b5d9-4d4c-b412-ab0b6d42c57d",
+              "name": "FillNegative"
+            }
+          },
+          {
+            "id": "n22969",
+            "type": "periodShift",
+            "x": 591,
+            "y": 41.18253968253968,
+            "w": 56,
+            "h": 56,
+            "shift": -1
+          },
+          {
+            "id": "n22970",
+            "type": "alias",
+            "x": 736.5,
+            "y": 41.18253968253968,
+            "w": 170,
+            "h": 64,
+            "sourceCanvasId": "c429",
+            "sourceNodeId": "n22966",
+            "plugs": []
+          },
+          {
+            "id": "n22971",
+            "type": "operator",
+            "x": 249.84126984126976,
+            "y": 119.18253968253964,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "to CFO"
+          },
+          {
+            "id": "n22972",
+            "type": "operator",
+            "x": 249.84126984126976,
+            "y": 192.38253968253966,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "to CFI"
+          },
+          {
+            "id": "n22974",
+            "type": "operator",
+            "x": 249.84126984126976,
+            "y": 265.5825396825397,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "Repayment Revolver"
+          },
+          {
+            "id": "n22975",
+            "type": "operator",
+            "x": 648,
+            "y": 558.3825396825398,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "to CF PIC proceeds"
+          },
+          {
+            "id": "n22976",
+            "type": "operator",
+            "x": 850.5,
+            "y": 774.9814814814814,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "to dividend payout"
+          },
+          {
+            "id": "n22977",
+            "type": "operator",
+            "x": 648,
+            "y": 633.1825396825395,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "to stock repurchase"
+          },
+          {
+            "id": "n22978",
+            "type": "operator",
+            "x": 249.84126984126976,
+            "y": 411.98253968253977,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "to CF debt DD"
+          },
+          {
+            "id": "n22979",
+            "type": "operator",
+            "x": 249.84126984126976,
+            "y": 338.7825396825397,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "to CF interest payment"
+          },
+          {
+            "id": "n22980",
+            "type": "operator",
+            "x": 249.84126984126976,
+            "y": 485.18253968253975,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "to cf debt repayment"
+          },
+          {
+            "id": "n22981",
+            "type": "value",
+            "x": 736.5,
+            "y": 629.1825396825395,
+            "w": 170,
+            "h": 64,
+            "text": "Stock repurchase",
+            "plugs": []
+          },
+          {
+            "id": "n25880",
+            "type": "alias",
+            "auto": true,
+            "x": 50,
+            "y": 119,
+            "w": 170,
+            "h": 64,
+            "sourceCanvasId": "c427",
+            "sourceNodeId": "n22809",
+            "plugs": []
+          },
+          {
+            "id": "n25882",
+            "type": "alias",
+            "auto": true,
+            "x": 50,
+            "y": 212,
+            "w": 170,
+            "h": 64,
+            "sourceCanvasId": "c427",
+            "sourceNodeId": "n22811",
+            "plugs": []
+          },
+          {
+            "id": "n25884",
+            "type": "alias",
+            "auto": true,
+            "x": 50,
+            "y": 306,
+            "w": 170,
+            "h": 64,
+            "sourceCanvasId": "c430",
+            "sourceNodeId": "n23052",
+            "plugs": []
+          },
+          {
+            "id": "n25886",
+            "type": "alias",
+            "auto": true,
+            "x": 50,
+            "y": 399,
+            "w": 170,
+            "h": 64,
+            "sourceCanvasId": "c430",
+            "sourceNodeId": "n25827",
+            "plugs": []
+          }
+        ],
+        "edges": [
+          {
+            "id": "e22988",
+            "from": "n22948",
+            "to": "n22952"
+          },
+          {
+            "id": "e22989",
+            "from": "n22949",
+            "to": "n22952"
+          },
+          {
+            "id": "e22990",
+            "from": "n22950",
+            "to": "n22952"
+          },
+          {
+            "id": "e22991",
+            "from": "n22952",
+            "to": "n22951"
+          },
+          {
+            "id": "e22992",
+            "from": "n22951",
+            "to": "n22958"
+          },
+          {
+            "id": "e22993",
+            "from": "n22953",
+            "to": "n22958"
+          },
+          {
+            "id": "e22994",
+            "from": "n22954",
+            "to": "n22958"
+          },
+          {
+            "id": "e22995",
+            "from": "n22955",
+            "to": "n22958"
+          },
+          {
+            "id": "e22996",
+            "from": "n22956",
+            "to": "n22958"
+          },
+          {
+            "id": "e22997",
+            "from": "n22958",
+            "to": "n22957"
+          },
+          {
+            "id": "e22998",
+            "from": "n22957",
+            "to": "n22960"
+          },
+          {
+            "id": "e22999",
+            "from": "n22959",
+            "to": "n22960"
+          },
+          {
+            "id": "e23000",
+            "from": "n22960",
+            "to": "n22961"
+          },
+          {
+            "id": "e23001",
+            "from": "n22961",
+            "to": "n22964"
+          },
+          {
+            "id": "e23002",
+            "from": "n22964",
+            "to": "n22962"
+          },
+          {
+            "id": "e23003",
+            "from": "n22965",
+            "to": "n22967"
+          },
+          {
+            "id": "e23004",
+            "from": "n22967",
+            "to": "n22966"
+          },
+          {
+            "id": "e23005",
+            "from": "n22962",
+            "to": "n22967"
+          },
+          {
+            "id": "e23006",
+            "from": "n22962",
+            "to": "n22968",
+            "toPort": 0
+          },
+          {
+            "id": "e23007",
+            "from": "n22968",
+            "to": "n22965"
+          },
+          {
+            "id": "e23008",
+            "from": "n22963",
+            "to": "n22964"
+          },
+          {
+            "id": "e23009",
+            "from": "n22969",
+            "to": "n22948"
+          },
+          {
+            "id": "e23010",
+            "from": "n22970",
+            "to": "n22969"
+          },
+          {
+            "id": "e23011",
+            "from": "n22971",
+            "to": "n22949"
+          },
+          {
+            "id": "e23012",
+            "from": "n22972",
+            "to": "n22950"
+          },
+          {
+            "id": "e23015",
+            "from": "n22979",
+            "to": "n22954"
+          },
+          {
+            "id": "e23016",
+            "from": "n22980",
+            "to": "n22956"
+          },
+          {
+            "id": "e23017",
+            "from": "n22978",
+            "to": "n22955"
+          },
+          {
+            "id": "e23018",
+            "from": "n22975",
+            "to": "n22959"
+          },
+          {
+            "id": "e23019",
+            "from": "n22976",
+            "to": "n22963"
+          },
+          {
+            "id": "e23020",
+            "from": "n22977",
+            "to": "n22981"
+          },
+          {
+            "id": "e23021",
+            "from": "n22981",
+            "to": "n22960"
+          },
+          {
+            "id": "e25881",
+            "from": "n25880",
+            "to": "n22971",
+            "auto": true
+          },
+          {
+            "id": "e25883",
+            "from": "n25882",
+            "to": "n22972",
+            "auto": true
+          },
+          {
+            "id": "e25885",
+            "from": "n25884",
+            "to": "n22974",
+            "auto": true
+          },
+          {
+            "id": "e25887",
+            "from": "n25886",
+            "to": "n22979",
+            "auto": true
+          },
+          {
+            "id": "e25910",
+            "from": "n22974",
+            "to": "n22953"
+          }
+        ],
+        "functions": [
+          {
+            "family": "1450d9b3-f118-4ec2-8586-8659d25181d9",
+            "version": 1,
+            "versionId": "bb7c8b91-b5d9-4d4c-b412-ab0b6d42c57d",
+            "text": "FillNegative(Input) = -min(0, Input)",
+            "description": "",
+            "note": "",
+            "calls": []
+          }
+        ]
+      },
+      "attachments": {
+        "excel": {
+          "family": "b3a36d3b-87ed-4405-96f0-1086887917bb",
+          "name": "CFWF",
+          "rows": [
+            {
+              "name": "bb cash",
+              "section": "calc",
+              "include": true,
+              "constant": false
+            },
+            {
+              "name": "cfo",
+              "section": "calc",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "cfi",
+              "section": "calc",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "cash available for debt service",
+              "section": "calc",
+              "include": true,
+              "constant": false
+            },
+            {
+              "name": "repayment revolver",
+              "section": "calc",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "interest payment",
+              "section": "input",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "draw down loan",
+              "section": "input",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "repayment loan",
+              "section": "input",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "remaining cash after debt service",
+              "section": "calc",
+              "include": true,
+              "constant": false
+            },
+            {
+              "name": "equity contribution",
+              "section": "input",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "stock repurchase",
+              "section": "input",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "cash available for sh distribution",
+              "section": "calc",
+              "include": true,
+              "constant": false
+            },
+            {
+              "name": "dividend payout",
+              "section": "input",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "remaining cash",
+              "section": "calc",
+              "include": true,
+              "constant": false
+            },
+            {
+              "name": "revolver dd",
+              "section": "calc",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "eb cash",
+              "section": "output",
+              "include": true,
+              "constant": false
+            }
+          ],
+          "customs": [],
+          "sectioned": [
+            "r10",
+            "r5",
+            "r6",
+            "r7",
+            "r9",
+            "r12",
+            "r0",
+            "r1",
+            "r2",
+            "r3",
+            "r4",
+            "r8",
+            "r11",
+            "r13",
+            "r14",
+            "r15"
+          ],
+          "flat": [
+            "r0",
+            "r1",
+            "r2",
+            "r3",
+            "r4",
+            "r5",
+            "r6",
+            "r7",
+            "r8",
+            "r9",
+            "r10",
+            "r11",
+            "r12",
+            "r13",
+            "r14",
+            "r15"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Revolver",
+      "description": "",
+      "group": "Model Engine",
+      "kind": "module",
+      "family": "fb2584b4-7497-4a80-815d-a664add3cd27",
+      "version": 5,
+      "note": "",
+      "versionId": "7b38045a-0b9c-424a-b674-845d08a65594",
+      "data": {
+        "version": 7,
+        "kind": "module",
+        "name": "Revolver",
+        "selfCanvasId": "c430",
+        "nextId": 25910,
+        "nodes": [
+          {
+            "id": "n23049",
+            "type": "value",
+            "x": 120.5010570824524,
+            "y": 65.20930232558138,
+            "w": 170,
+            "h": 64,
+            "text": "BB Revolver",
+            "plugs": []
+          },
+          {
+            "id": "n23050",
+            "type": "value",
+            "x": 120.5010570824524,
+            "y": 302.20930232558135,
+            "w": 170,
+            "h": 64,
+            "text": "EB Revolver",
+            "blockRole": "output",
+            "plugs": [
+              "to Revolver"
+            ]
+          },
+          {
+            "id": "n23051",
+            "type": "value",
+            "x": 324.5010570824524,
+            "y": 145.54263565891475,
+            "w": 170,
+            "h": 64,
+            "text": "DD Revolvers",
+            "blockRole": "input",
+            "plugs": [
+              "DD Revolver"
+            ]
+          },
+          {
+            "id": "n23052",
+            "type": "value",
+            "x": 324.5010570824524,
+            "y": 221.87596899224806,
+            "w": 170,
+            "h": 64,
+            "text": "Repayment Revolver",
+            "blockRole": "input",
+            "plugs": [
+              "Repayment Revolver"
+            ]
+          },
+          {
+            "id": "n23053",
+            "type": "operator",
+            "x": 177.5010570824524,
+            "y": 149.54263565891475,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": ""
+          },
+          {
+            "id": "n23054",
+            "type": "periodShift",
+            "x": 75.5010570824524,
+            "y": 187.70930232558138,
+            "w": 56,
+            "h": 56,
+            "shift": -1
+          },
+          {
+            "id": "n23055",
+            "type": "operator",
+            "x": 544.5010570824525,
+            "y": 149.54263565891475,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "DD Revolver CFWF"
+          },
+          {
+            "id": "n23056",
+            "type": "alias",
+            "x": 769.5010570824525,
+            "y": 221.87596899224806,
+            "w": 170,
+            "h": 64,
+            "sourceCanvasId": "c430",
+            "sourceNodeId": "n23049",
+            "plugs": []
+          },
+          {
+            "id": "n23057",
+            "type": "function",
+            "x": 556.5010570824525,
+            "y": 216.87596899224806,
+            "w": 190,
+            "h": 74,
+            "fn": {
+              "family": "f9562bd4-051d-476c-932c-bfb007fb1456",
+              "version": 1,
+              "versionId": "e4e2428f-061c-4f21-998c-83eedf4495cc",
+              "name": "Negatize"
+            }
+          },
+          {
+            "id": "n25823",
+            "type": "value",
+            "x": 451.5010570824524,
+            "y": 430.20930232558135,
+            "w": 170,
+            "h": 64,
+            "text": "Interest rate revolver",
+            "plugs": [],
+            "periodValues": [
+              0.05,
+              0.05,
+              0.05,
+              0.05,
+              0.05,
+              0.05,
+              0.05,
+              0.05,
+              0.05,
+              0.05
+            ],
+            "periodValuesRange": {
+              "min": 0,
+              "max": 1
+            },
+            "style": {
+              "numberFormat": {
+                "kind": "percent",
+                "decimals": 1,
+                "currencySymbol": "$"
+              },
+              "fill": "#eff6ff",
+              "border": {
+                "color": "#93c5fd",
+                "width": 1.5,
+                "style": "solid"
+              },
+              "font": {
+                "family": "",
+                "size": 14,
+                "weight": "normal",
+                "color": "#1e3a8a"
+              }
+            }
+          },
+          {
+            "id": "n25824",
+            "type": "value",
+            "x": 286.5010570824524,
+            "y": 529.2093023255813,
+            "w": 170,
+            "h": 64,
+            "text": "Interest Expense",
+            "plugs": [
+              "Total net interest expesnse"
+            ]
+          },
+          {
+            "id": "n25825",
+            "type": "operator",
+            "x": 343.5010570824524,
+            "y": 434.20930232558135,
+            "w": 56,
+            "h": 56,
+            "text": "×",
+            "socket": ""
+          },
+          {
+            "id": "n25827",
+            "type": "value",
+            "x": 286.5010570824524,
+            "y": 632.2093023255813,
+            "w": 170,
+            "h": 64,
+            "text": "Interest Payment",
+            "plugs": [
+              "to CF interest payment"
+            ]
+          },
+          {
+            "id": "n25828",
+            "type": "function",
+            "x": 499.5010570824524,
+            "y": 571.2093023255813,
+            "w": 190,
+            "h": 74,
+            "fn": {
+              "family": "f9562bd4-051d-476c-932c-bfb007fb1456",
+              "version": 1,
+              "versionId": "e4e2428f-061c-4f21-998c-83eedf4495cc",
+              "name": "Negatize"
+            }
+          },
+          {
+            "id": "n25888",
+            "type": "alias",
+            "auto": true,
+            "x": 344.5010570824524,
+            "y": 69.20930232558138,
+            "w": 170,
+            "h": 64,
+            "sourceCanvasId": "c429",
+            "sourceNodeId": "n22965",
+            "plugs": []
+          },
+          {
+            "id": "n25908",
+            "type": "alias",
+            "x": 121.5010570824524,
+            "y": 434.20930232558135,
+            "w": 170,
+            "h": 64,
+            "sourceCanvasId": "c430",
+            "sourceNodeId": "n23049",
+            "plugs": []
+          }
+        ],
+        "edges": [
+          {
+            "id": "e23059",
+            "from": "n23049",
+            "to": "n23053"
+          },
+          {
+            "id": "e23060",
+            "from": "n23051",
+            "to": "n23053"
+          },
+          {
+            "id": "e23061",
+            "from": "n23050",
+            "to": "n23054"
+          },
+          {
+            "id": "e23062",
+            "from": "n23054",
+            "to": "n23049"
+          },
+          {
+            "id": "e23063",
+            "from": "n23055",
+            "to": "n23051"
+          },
+          {
+            "id": "e23064",
+            "from": "n23052",
+            "to": "n23053"
+          },
+          {
+            "id": "e23065",
+            "from": "n23053",
+            "to": "n23050"
+          },
+          {
+            "id": "e23066",
+            "from": "n23056",
+            "to": "n23057",
+            "toPort": 0
+          },
+          {
+            "id": "e23067",
+            "from": "n23057",
+            "to": "n23052"
+          },
+          {
+            "id": "e25830",
+            "from": "n25823",
+            "to": "n25825"
+          },
+          {
+            "id": "e25831",
+            "from": "n25825",
+            "to": "n25824"
+          },
+          {
+            "id": "e25832",
+            "from": "n25824",
+            "to": "n25828",
+            "toPort": 0
+          },
+          {
+            "id": "e25833",
+            "from": "n25828",
+            "to": "n25827"
+          },
+          {
+            "id": "e25889",
+            "from": "n25888",
+            "to": "n23055",
+            "auto": true
+          },
+          {
+            "id": "e25909",
+            "from": "n25908",
+            "to": "n25825"
+          }
+        ],
+        "functions": [
+          {
+            "family": "f9562bd4-051d-476c-932c-bfb007fb1456",
+            "version": 1,
+            "versionId": "e4e2428f-061c-4f21-998c-83eedf4495cc",
+            "text": "Negatize(Number) = -1 * Number",
+            "description": "Flip sign by x -1",
+            "note": "",
+            "calls": []
+          }
+        ]
+      },
+      "attachments": {
+        "excel": {
+          "family": "fb2584b4-7497-4a80-815d-a664add3cd27",
+          "name": "Revolver",
+          "rows": [
+            {
+              "name": "bb revolver",
+              "section": "calc",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "dd revolvers",
+              "section": "calc",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "repayment revolver",
+              "section": "calc",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "eb revolver",
+              "section": "calc",
+              "include": true,
+              "constant": false,
+              "style": {
+                "fill": null,
+                "font": {
+                  "color": "#475569",
+                  "weight": "normal"
+                },
+                "border": {
+                  "color": "#94a3b8",
+                  "style": "solid",
+                  "sides": [
+                    "top"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "interest rate revolver",
+              "section": "input",
+              "include": true,
+              "constant": false
+            },
+            {
+              "name": "interest expense",
+              "section": "calc",
+              "include": true,
+              "constant": false
+            },
+            {
+              "name": "interest payment",
+              "section": "output",
+              "include": true,
+              "constant": false
+            }
+          ],
+          "customs": [
+            {
+              "label": "",
+              "section": "input",
+              "showPeriodLabels": false
+            }
+          ],
+          "sectioned": [
+            "r4",
+            "c0",
+            "r0",
+            "r1",
+            "r2",
+            "r5",
+            "r3",
+            "r6"
+          ],
+          "flat": [
+            "r0",
+            "r1",
+            "r2",
+            "r3",
+            "c0",
+            "r4",
+            "r5",
+            "r6"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Audit BS",
+      "description": "",
+      "group": "Utilities",
+      "kind": "module",
+      "family": "f6133f9a-26d1-45a8-a3e1-7a9f319ddf27",
+      "version": 6,
+      "note": "Revert to v4",
+      "versionId": "9dba6d91-0804-401c-a74d-81a4f4354d7e",
+      "data": {
+        "version": 7,
+        "kind": "module",
+        "name": "Audit BS",
+        "selfCanvasId": "c309",
+        "nextId": 17820,
+        "nodes": [
+          {
+            "id": "n15161",
+            "type": "value",
+            "x": 238.08333333333337,
+            "y": 349.5,
+            "w": 170,
+            "h": 64,
+            "text": "Total Asset",
+            "plugs": []
+          },
+          {
+            "id": "n15162",
+            "type": "value",
+            "x": 845.5833333333335,
+            "y": 41.5,
+            "w": 170,
+            "h": 64,
+            "text": "Total Liabilities",
+            "plugs": []
+          },
+          {
+            "id": "n15163",
+            "type": "value",
+            "x": 631.5833333333335,
+            "y": 133.5,
+            "w": 170,
+            "h": 64,
+            "text": "Total Equity",
+            "plugs": []
+          },
+          {
+            "id": "n15164",
+            "type": "operator",
+            "x": 295.08333333333337,
+            "y": 253.5,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "Total Asset"
+          },
+          {
+            "id": "n15165",
+            "type": "operator",
+            "x": 521.6666666666669,
+            "y": 137.5,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "Total Equity"
+          },
+          {
+            "id": "n15166",
+            "type": "operator",
+            "x": 735.6666666666669,
+            "y": 45.5,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "Total Liability"
+          },
+          {
+            "id": "n15167",
+            "type": "operator",
+            "x": 653.8333333333334,
+            "y": 481.75,
+            "w": 56,
+            "h": 40,
+            "text": "abs",
+            "socket": ""
+          },
+          {
+            "id": "n15168",
+            "type": "operator",
+            "x": 688.5833333333335,
+            "y": 353.5,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": ""
+          },
+          {
+            "id": "n15169",
+            "type": "operator",
+            "x": 448.50000000000006,
+            "y": 353.5,
+            "w": 56,
+            "h": 56,
+            "text": "−",
+            "socket": ""
+          },
+          {
+            "id": "n15170",
+            "type": "value",
+            "x": 856.8333333333334,
+            "y": 469.75,
+            "w": 170,
+            "h": 64,
+            "text": "Tolerance",
+            "plugs": []
+          },
+          {
+            "id": "n15171",
+            "type": "operator",
+            "x": 755.3333333333334,
+            "y": 473.75,
+            "w": 56,
+            "h": 56,
+            "text": "≤",
+            "socket": ""
+          },
+          {
+            "id": "n15172",
+            "type": "value",
+            "x": 698.3333333333334,
+            "y": 571.5,
+            "w": 170,
+            "h": 64,
+            "text": "BS check",
+            "plugs": []
+          },
+          {
+            "id": "n15173",
+            "type": "value",
+            "x": 391.50000000000006,
+            "y": 469.75,
+            "w": 170,
+            "h": 64,
+            "text": "Dr Cr Match",
+            "plugs": []
+          },
+          {
+            "id": "n17286",
+            "type": "operator",
+            "x": 1072.3333333333335,
+            "y": 469.75,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "To Tolerance"
+          },
+          {
+            "id": "n17806",
+            "type": "alias",
+            "auto": true,
+            "x": 95,
+            "y": 254,
+            "w": 170,
+            "h": 64,
+            "sourceCanvasId": "c304",
+            "sourceNodeId": "n14793",
+            "plugs": []
+          },
+          {
+            "id": "n17808",
+            "type": "alias",
+            "auto": true,
+            "x": 322,
+            "y": 138,
+            "w": 170,
+            "h": 64,
+            "sourceCanvasId": "c304",
+            "sourceNodeId": "n14795",
+            "plugs": []
+          },
+          {
+            "id": "n17810",
+            "type": "alias",
+            "auto": true,
+            "x": 536,
+            "y": 46,
+            "w": 170,
+            "h": 64,
+            "sourceCanvasId": "c304",
+            "sourceNodeId": "n14794",
+            "plugs": []
+          },
+          {
+            "id": "n17812",
+            "type": "alias",
+            "auto": true,
+            "x": 872,
+            "y": 390,
+            "w": 170,
+            "h": 64,
+            "sourceCanvasId": "c313",
+            "sourceNodeId": "n17167",
+            "plugs": []
+          }
+        ],
+        "edges": [
+          {
+            "id": "e15177",
+            "from": "n15166",
+            "to": "n15162"
+          },
+          {
+            "id": "e15178",
+            "from": "n15165",
+            "to": "n15163"
+          },
+          {
+            "id": "e15179",
+            "from": "n15164",
+            "to": "n15161"
+          },
+          {
+            "id": "e15180",
+            "from": "n15162",
+            "to": "n15168"
+          },
+          {
+            "id": "e15181",
+            "from": "n15163",
+            "to": "n15168"
+          },
+          {
+            "id": "e15182",
+            "from": "n15161",
+            "to": "n15169"
+          },
+          {
+            "id": "e15183",
+            "from": "n15168",
+            "to": "n15169"
+          },
+          {
+            "id": "e15184",
+            "from": "n15167",
+            "to": "n15171"
+          },
+          {
+            "id": "e15185",
+            "from": "n15170",
+            "to": "n15171"
+          },
+          {
+            "id": "e15186",
+            "from": "n15171",
+            "to": "n15172"
+          },
+          {
+            "id": "e15187",
+            "from": "n15169",
+            "to": "n15173"
+          },
+          {
+            "id": "e15188",
+            "from": "n15173",
+            "to": "n15167"
+          },
+          {
+            "id": "e17287",
+            "from": "n17286",
+            "to": "n15170"
+          },
+          {
+            "id": "e17807",
+            "from": "n17806",
+            "to": "n15164",
+            "auto": true
+          },
+          {
+            "id": "e17809",
+            "from": "n17808",
+            "to": "n15165",
+            "auto": true
+          },
+          {
+            "id": "e17811",
+            "from": "n17810",
+            "to": "n15166",
+            "auto": true
+          },
+          {
+            "id": "e17813",
+            "from": "n17812",
+            "to": "n17286",
+            "auto": true
+          }
+        ]
+      },
+      "attachments": {
+        "excel": {
+          "family": "f6133f9a-26d1-45a8-a3e1-7a9f319ddf27",
+          "name": "Audit BS",
+          "tabName": "Audit",
+          "rows": [
+            {
+              "name": "total liabilities",
+              "section": "input",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "total equity",
+              "section": "input",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "total asset",
+              "section": "input",
+              "include": true,
+              "constant": false,
+              "indent": 1
+            },
+            {
+              "name": "dr cr match",
+              "section": "calc",
+              "include": true,
+              "constant": false
+            },
+            {
+              "name": "tolerance",
+              "section": "input",
+              "include": true,
+              "constant": false
+            },
+            {
+              "name": "bs check",
+              "section": "output",
+              "include": true,
+              "constant": false
+            }
+          ],
+          "customs": [
+            {
+              "label": "",
+              "section": "calc",
+              "showPeriodLabels": false
+            },
+            {
+              "label": "",
+              "section": "input",
+              "showPeriodLabels": false
+            }
+          ],
+          "sectioned": [
+            "r2",
+            "r1",
+            "r0",
+            "r4",
+            "c1",
+            "r3",
+            "c0",
+            "r5"
+          ],
+          "flat": [
+            "r2",
+            "c1",
+            "r1",
+            "r0",
+            "r3",
+            "r4",
+            "c0",
+            "r5"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Audit CFWF",
+      "description": "",
+      "group": "Utilities",
+      "kind": "module",
+      "family": "88720329-86aa-44b0-a79d-3764ae6644b7",
+      "version": 1,
+      "note": "",
+      "versionId": "a6db303c-b614-4b6d-bd10-071f2ce09f76",
+      "data": {
+        "version": 7,
+        "kind": "module",
+        "name": "Audit CFWF",
+        "selfCanvasId": "c312",
+        "nextId": 17820,
+        "nodes": [
+          {
+            "id": "n17349",
+            "type": "operator",
+            "x": 587.3333333333333,
+            "y": 308.75,
+            "w": 56,
+            "h": 40,
+            "text": "abs",
+            "socket": ""
+          },
+          {
+            "id": "n17350",
+            "type": "value",
+            "x": 790.3333333333333,
+            "y": 296.75,
+            "w": 170,
+            "h": 64,
+            "text": "Tolerance",
+            "plugs": []
+          },
+          {
+            "id": "n17351",
+            "type": "operator",
+            "x": 688.8333333333333,
+            "y": 300.75,
+            "w": 56,
+            "h": 56,
+            "text": "≤",
+            "socket": ""
+          },
+          {
+            "id": "n17352",
+            "type": "value",
+            "x": 631.8333333333333,
+            "y": 398.5,
+            "w": 170,
+            "h": 64,
+            "text": "Cash balance check",
+            "plugs": []
+          },
+          {
+            "id": "n17353",
+            "type": "value",
+            "x": 325,
+            "y": 296.75,
+            "w": 170,
+            "h": 64,
+            "text": "Cash balance Match",
+            "plugs": []
+          },
+          {
+            "id": "n17354",
+            "type": "operator",
+            "x": 1005.8333333333335,
+            "y": 296.75,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "To Tolerance"
+          },
+          {
+            "id": "n17424",
+            "type": "value",
+            "x": 325,
+            "y": 133.75,
+            "w": 170,
+            "h": 64,
+            "text": "Cash per BS",
+            "plugs": []
+          },
+          {
+            "id": "n17488",
+            "type": "value",
+            "x": 631.8333333333333,
+            "y": 133.75,
+            "w": 170,
+            "h": 64,
+            "text": "Cash per CFWF",
+            "plugs": []
+          },
+          {
+            "id": "n17552",
+            "type": "operator",
+            "x": 535.4166666666666,
+            "y": 137.75,
+            "w": 56,
+            "h": 56,
+            "text": "−",
+            "socket": ""
+          },
+          {
+            "id": "n17556",
+            "type": "operator",
+            "x": 228.58333333333337,
+            "y": 137.75,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "Cash per BS"
+          },
+          {
+            "id": "n17557",
+            "type": "operator",
+            "x": 842.2499999999999,
+            "y": 137.75,
+            "w": 56,
+            "h": 56,
+            "text": "+",
+            "socket": "Cash per CFWF"
+          },
+          {
+            "id": "n17814",
+            "type": "alias",
+            "auto": true,
+            "x": 806,
+            "y": 217,
+            "w": 170,
+            "h": 64,
+            "sourceCanvasId": "c313",
+            "sourceNodeId": "n17167",
+            "plugs": []
+          },
+          {
+            "id": "n17816",
+            "type": "alias",
+            "auto": true,
+            "x": 29,
+            "y": 138,
+            "w": 170,
+            "h": 64,
+            "sourceCanvasId": "c304",
+            "sourceNodeId": "n14796",
+            "plugs": []
+          },
+          {
+            "id": "n17818",
+            "type": "alias",
+            "auto": true,
+            "x": 622,
+            "y": 218,
+            "w": 170,
+            "h": 64,
+            "sourceCanvasId": "c307",
+            "sourceNodeId": "n15027",
+            "plugs": []
+          }
+        ],
+        "edges": [
+          {
+            "id": "e17356",
+            "from": "n17349",
+            "to": "n17351"
+          },
+          {
+            "id": "e17357",
+            "from": "n17350",
+            "to": "n17351"
+          },
+          {
+            "id": "e17358",
+            "from": "n17351",
+            "to": "n17352"
+          },
+          {
+            "id": "e17359",
+            "from": "n17353",
+            "to": "n17349"
+          },
+          {
+            "id": "e17360",
+            "from": "n17354",
+            "to": "n17350"
+          },
+          {
+            "id": "e17553",
+            "from": "n17424",
+            "to": "n17552"
+          },
+          {
+            "id": "e17554",
+            "from": "n17488",
+            "to": "n17552"
+          },
+          {
+            "id": "e17555",
+            "from": "n17552",
+            "to": "n17353"
+          },
+          {
+            "id": "e17558",
+            "from": "n17556",
+            "to": "n17424"
+          },
+          {
+            "id": "e17559",
+            "from": "n17557",
+            "to": "n17488"
+          },
+          {
+            "id": "e17815",
+            "from": "n17814",
+            "to": "n17354",
+            "auto": true
+          },
+          {
+            "id": "e17817",
+            "from": "n17816",
+            "to": "n17556",
+            "auto": true
+          },
+          {
+            "id": "e17819",
+            "from": "n17818",
+            "to": "n17557",
+            "auto": true
+          }
+        ]
+      },
+      "attachments": {
+        "excel": {
+          "family": "88720329-86aa-44b0-a79d-3764ae6644b7",
+          "name": "Audit CFWF",
+          "rows": [
+            {
+              "name": "cash per bs",
+              "section": "calc",
+              "include": true,
+              "constant": false
+            },
+            {
+              "name": "cash per cfwf",
+              "section": "calc",
+              "include": true,
+              "constant": false
+            },
+            {
+              "name": "cash balance match",
+              "section": "calc",
+              "include": true,
+              "constant": false
+            },
+            {
+              "name": "tolerance",
+              "section": "calc",
+              "include": true,
+              "constant": false
+            },
+            {
+              "name": "cash balance check",
+              "section": "output",
+              "include": true,
+              "constant": false
+            }
+          ],
+          "customs": [
+            {
+              "label": "",
+              "section": "calc",
+              "showPeriodLabels": false
+            },
+            {
+              "label": "",
+              "section": "output",
+              "showPeriodLabels": false
+            }
+          ],
+          "sectioned": [
+            "r0",
+            "r1",
+            "r2",
+            "r3",
+            "c0",
+            "r4",
+            "c1"
+          ],
+          "flat": [
+            "r3",
+            "c0",
+            "r0",
+            "r1",
+            "r2",
+            "c1",
+            "r4"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Tolerance",
+      "description": "",
+      "group": "Inputs - Common",
+      "kind": "module",
+      "family": "d93517f8-7e53-4fef-a42f-56fffd2c14c9",
+      "version": 2,
+      "note": "Set values 0.001",
+      "versionId": "84eac6bd-8d28-4709-8844-e392df250ea9",
+      "data": {
+        "version": 7,
+        "kind": "module",
+        "name": "Tolerance",
+        "selfCanvasId": "c472",
+        "nextId": 28958,
+        "nodes": [
+          {
+            "id": "n28551",
+            "type": "value",
+            "x": 105,
+            "y": 72,
+            "w": 170,
+            "h": 64,
+            "text": "Tolerance",
+            "plugs": [
+              "To Tolerance"
+            ],
+            "periodValues": [
+              0.001,
+              0.001,
+              0.001,
+              0.001,
+              0.001,
+              0.001,
+              0.001,
+              0.001,
+              0.001,
+              0.001
+            ],
+            "periodValuesRange": {
+              "min": 0,
+              "max": 1
+            }
+          }
+        ],
+        "edges": []
+      }
+    }
+  ],
+  "functions": []
+}
