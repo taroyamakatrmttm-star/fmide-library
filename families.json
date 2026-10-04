@@ -2,6 +2,14 @@
   "kind": "fmIDE-library-families",
   "version": 1,
   "families": {
+    "0b56419b-a0d3-41b0-baeb-5ad2db2fc673": {
+      "type": "template",
+      "kind": "module",
+      "accountId": 333327860,
+      "account": "taroyamakatrmttm-star",
+      "firstPack": "c526c522-a94f-4c62-8c03-add8dfc7444d",
+      "added": "2026-10-04"
+    },
     "5592ec75-0ce9-48d7-88a1-377eb2b59d9a": {
       "type": "template",
       "kind": "module",
@@ -33,6 +41,22 @@
       "firstPack": "dab0e7a7-139e-430d-bff6-6dc405066113",
       "added": "2026-09-27"
     },
+    "88720329-86aa-44b0-a79d-3764ae6644b7": {
+      "type": "template",
+      "kind": "module",
+      "accountId": 333327860,
+      "account": "taroyamakatrmttm-star",
+      "firstPack": "c526c522-a94f-4c62-8c03-add8dfc7444d",
+      "added": "2026-10-04"
+    },
+    "b3a36d3b-87ed-4405-96f0-1086887917bb": {
+      "type": "template",
+      "kind": "module",
+      "accountId": 333327860,
+      "account": "taroyamakatrmttm-star",
+      "firstPack": "c526c522-a94f-4c62-8c03-add8dfc7444d",
+      "added": "2026-10-04"
+    },
     "be7df1bc-aa2f-4542-b690-f04a74d3c52c": {
       "type": "template",
       "kind": "recipe",
@@ -40,6 +64,14 @@
       "account": "taroyamakatrmttm-star",
       "firstPack": "dab0e7a7-139e-430d-bff6-6dc405066113",
       "added": "2026-09-27"
+    },
+    "d93517f8-7e53-4fef-a42f-56fffd2c14c9": {
+      "type": "template",
+      "kind": "module",
+      "accountId": 333327860,
+      "account": "taroyamakatrmttm-star",
+      "firstPack": "c526c522-a94f-4c62-8c03-add8dfc7444d",
+      "added": "2026-10-04"
     },
     "e1c60128-c669-4c68-b66f-6e2e9b86f234": {
       "type": "function",
@@ -55,6 +87,14 @@
       "account": "taroyamakatrmttm-star",
       "firstPack": "dab0e7a7-139e-430d-bff6-6dc405066113",
       "added": "2026-09-27"
+    },
+    "fb2584b4-7497-4a80-815d-a664add3cd27": {
+      "type": "template",
+      "kind": "module",
+      "accountId": 333327860,
+      "account": "taroyamakatrmttm-star",
+      "firstPack": "c526c522-a94f-4c62-8c03-add8dfc7444d",
+      "added": "2026-10-04"
     }
   }
 }
