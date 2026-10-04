@@ -2,6 +2,24 @@
   "kind": "fmIDE-library-packs",
   "version": 1,
   "packs": {
+    "b9b3546c-17a7-4fe6-8ba9-1152d4d56c60": {
+      "accountId": 333327860,
+      "account": "taroyamakatrmttm-star",
+      "added": "2026-10-04",
+      "sha256": "466983b4251ea00a830babca51bad99d39be67d470c9ce13722bd167f4a0989d",
+      "versions": [
+        "779c7207-ff38-4ad4-98be-d4644a09eab8",
+        "f7fe8690-13c3-489a-ae86-38b197f1ba13",
+        "4c32b15b-0cf4-4cf3-bb78-92750e696352",
+        "43cdbc5b-9b66-4fea-a7f5-8b6c09d3d155",
+        "d2f5d15c-e4e0-452c-8a73-4c42993c0188",
+        "949b1ede-1d9f-4d54-8f79-4820df737a59",
+        "7b38045a-0b9c-424a-b674-845d08a65594",
+        "9dba6d91-0804-401c-a74d-81a4f4354d7e",
+        "a6db303c-b614-4b6d-bd10-071f2ce09f76",
+        "84eac6bd-8d28-4709-8844-e392df250ea9"
+      ]
+    },
     "c526c522-a94f-4c62-8c03-add8dfc7444d": {
       "accountId": 333327860,
       "account": "taroyamakatrmttm-star",
